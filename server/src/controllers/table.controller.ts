@@ -4,28 +4,32 @@ import { EntityError, isPrismaClientKnownRequestError } from "@/utils/errors";
 import { Prisma } from "@prisma/client";
 import { randomId } from "@/utils/helpers";
 
-export const getTableList = () => {
+// Las mesas se identifican por su número dentro de cada restaurante.
+
+export const getTableList = (restaurantId: number) => {
   return prisma.table.findMany({
+    where: { restaurantId },
     orderBy: {
       createdAt: "desc",
     },
   });
 };
 
-export const getTableDetail = (number: number) => {
+export const getTableDetail = (restaurantId: number, number: number) => {
   return prisma.table.findUniqueOrThrow({
     where: {
-      number,
+      restaurantId_number: { restaurantId, number },
     },
   });
 };
 
-export const createTable = async (data: CreateTableBodyType) => {
+export const createTable = async (restaurantId: number, data: CreateTableBodyType) => {
   const token = randomId();
   try {
     const result = await prisma.table.create({
       data: {
         ...data,
+        restaurantId,
         token,
       },
     });
@@ -43,16 +47,16 @@ export const createTable = async (data: CreateTableBodyType) => {
   }
 };
 
-export const updateTable = (number: number, data: UpdateTableBodyType) => {
+export const updateTable = async (restaurantId: number, number: number, data: UpdateTableBodyType) => {
+  const where = { restaurantId_number: { restaurantId, number } };
   if (data.changeToken) {
     const token = randomId();
-    // Xóa hết các refresh token của guest theo table
+    const current = await prisma.table.findUniqueOrThrow({ where });
+    // Al cambiar el QR se invalidan las sesiones de los clientes de esa mesa
     return prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const [table] = await Promise.all([
         tx.table.update({
-          where: {
-            number,
-          },
+          where,
           data: {
             status: data.status,
             capacity: data.capacity,
@@ -61,7 +65,7 @@ export const updateTable = (number: number, data: UpdateTableBodyType) => {
         }),
         tx.guest.updateMany({
           where: {
-            tableNumber: number,
+            tableId: current.id,
           },
           data: {
             refreshToken: null,
@@ -73,9 +77,7 @@ export const updateTable = (number: number, data: UpdateTableBodyType) => {
     });
   }
   return prisma.table.update({
-    where: {
-      number,
-    },
+    where,
     data: {
       status: data.status,
       capacity: data.capacity,
@@ -83,10 +85,10 @@ export const updateTable = (number: number, data: UpdateTableBodyType) => {
   });
 };
 
-export const deleteTable = (number: number) => {
+export const deleteTable = (restaurantId: number, number: number) => {
   return prisma.table.delete({
     where: {
-      number,
+      restaurantId_number: { restaurantId, number },
     },
   });
 };

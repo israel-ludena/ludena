@@ -12,5 +12,7 @@ declare module "fastify" {
   }
   interface FastifyRequest {
     decodedAccessToken?: TokenPayload;
+    /** Restaurante del usuario autenticado (cuenta o comensal). Lo fija requireLoginedHook. */
+    restaurantId?: number;
   }
 }

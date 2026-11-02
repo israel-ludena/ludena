@@ -3,19 +3,24 @@ import prisma from "@/database";
 import { CreateOrdersBodyType, UpdateOrderBodyType } from "@/schemaValidations/order.schema";
 import { Prisma } from "@prisma/client";
 
-export const createOrdersController = async (orderHandlerId: number, body: CreateOrdersBodyType) => {
+export const createOrdersController = async (
+  restaurantId: number,
+  orderHandlerId: number,
+  body: CreateOrdersBodyType
+) => {
   const { guestId, orders } = body;
-  const guest = await prisma.guest.findUniqueOrThrow({
+  const guest = await prisma.guest.findFirstOrThrow({
     where: {
       id: guestId,
+      restaurantId,
     },
   });
-  if (guest.tableNumber === null) {
+  if (guest.tableId === null) {
     throw new Error("La mesa de este cliente fue eliminada; elige otro cliente");
   }
   const table = await prisma.table.findUniqueOrThrow({
     where: {
-      number: guest.tableNumber,
+      id: guest.tableId,
     },
   });
   if (table.status === TableStatus.Hidden) {
@@ -26,11 +31,13 @@ export const createOrdersController = async (orderHandlerId: number, body: Creat
     prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const ordersRecord = await Promise.all(
         orders.map(async (order) => {
-          const dish = await tx.dish.findUniqueOrThrow({
+          const dish = await tx.dish.findFirst({
             where: {
               id: order.dishId,
+              restaurantId,
             },
           });
+          if (!dish) throw new Error("El plato no existe en este restaurante");
           if (dish.status === DishStatus.Unavailable) {
             throw new Error(`El plato ${dish.name} está agotado`);
           }
@@ -52,7 +59,9 @@ export const createOrdersController = async (orderHandlerId: number, body: Creat
               dishSnapshotId: dishSnapshot.id,
               guestId,
               quantity: order.quantity,
-              tableNumber: guest.tableNumber,
+              restaurantId,
+              tableId: table.id,
+              tableNumber: table.number,
               orderHandlerId,
               status: OrderStatus.Pending,
             },
@@ -85,7 +94,10 @@ export const createOrdersController = async (orderHandlerId: number, body: Creat
   };
 };
 
-export const getOrdersController = async ({ fromDate, toDate }: { fromDate?: Date; toDate?: Date }) => {
+export const getOrdersController = async (
+  restaurantId: number,
+  { fromDate, toDate }: { fromDate?: Date; toDate?: Date }
+) => {
   const orders = await prisma.order.findMany({
     include: {
       dishSnapshot: true,
@@ -96,6 +108,7 @@ export const getOrdersController = async ({ fromDate, toDate }: { fromDate?: Dat
       createdAt: "desc",
     },
     where: {
+      restaurantId,
       createdAt: {
         gte: fromDate,
         lte: toDate,
@@ -106,10 +119,14 @@ export const getOrdersController = async ({ fromDate, toDate }: { fromDate?: Dat
 };
 
 // Controller thanh toán các hóa đơn dựa trên guestId
-export const payOrdersController = async ({ guestId, orderHandlerId }: { guestId: number; orderHandlerId: number }) => {
+export const payOrdersController = async (
+  restaurantId: number,
+  { guestId, orderHandlerId }: { guestId: number; orderHandlerId: number }
+) => {
   const orders = await prisma.order.findMany({
     where: {
       guestId,
+      restaurantId,
       status: {
         in: [OrderStatus.Pending, OrderStatus.Processing, OrderStatus.Delivered],
       },
@@ -161,10 +178,11 @@ export const payOrdersController = async ({ guestId, orderHandlerId }: { guestId
   };
 };
 
-export const getOrderDetailController = (orderId: number) => {
-  return prisma.order.findUniqueOrThrow({
+export const getOrderDetailController = (restaurantId: number, orderId: number) => {
+  return prisma.order.findFirstOrThrow({
     where: {
       id: orderId,
+      restaurantId,
     },
     include: {
       dishSnapshot: true,
@@ -176,14 +194,16 @@ export const getOrderDetailController = (orderId: number) => {
 };
 
 export const updateOrderController = async (
+  restaurantId: number,
   orderId: number,
   body: UpdateOrderBodyType & { orderHandlerId: number }
 ) => {
   const { status, dishId, quantity, orderHandlerId } = body;
   const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
-    const order = await prisma.order.findUniqueOrThrow({
+    const order = await tx.order.findFirstOrThrow({
       where: {
         id: orderId,
+        restaurantId,
       },
       include: {
         dishSnapshot: true,
@@ -191,11 +211,13 @@ export const updateOrderController = async (
     });
     let dishSnapshotId = order.dishSnapshotId;
     if (order.dishSnapshot.dishId !== dishId) {
-      const dish = await tx.dish.findUniqueOrThrow({
+      const dish = await tx.dish.findFirst({
         where: {
           id: dishId,
+          restaurantId,
         },
       });
+      if (!dish) throw new Error("El plato no existe en este restaurante");
       const dishSnapshot = await tx.dishSnapshot.create({
         data: {
           description: dish.description,

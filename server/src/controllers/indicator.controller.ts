@@ -4,7 +4,10 @@ import prisma from "@/database";
 import { formatInTimeZone } from "date-fns-tz";
 import { Prisma } from "@prisma/client";
 
-export const dashboardIndicatorController = async ({ fromDate, toDate }: { fromDate: Date; toDate: Date }) => {
+export const dashboardIndicatorController = async (
+  restaurantId: number,
+  { fromDate, toDate }: { fromDate: Date; toDate: Date }
+) => {
   const [orders, guests, dishes] = await Promise.all([
     prisma.order.findMany({
       include: {
@@ -15,6 +18,7 @@ export const dashboardIndicatorController = async ({ fromDate, toDate }: { fromD
         createdAt: "desc",
       },
       where: {
+        restaurantId,
         createdAt: {
           gte: fromDate,
           lte: toDate,
@@ -23,6 +27,7 @@ export const dashboardIndicatorController = async ({ fromDate, toDate }: { fromD
     }),
     prisma.guest.findMany({
       where: {
+        restaurantId,
         createdAt: {
           gte: fromDate,
           lte: toDate,
@@ -34,7 +39,7 @@ export const dashboardIndicatorController = async ({ fromDate, toDate }: { fromD
         },
       },
     }),
-    prisma.dish.findMany(),
+    prisma.dish.findMany({ where: { restaurantId } }),
   ]);
 
   // Doanh thu

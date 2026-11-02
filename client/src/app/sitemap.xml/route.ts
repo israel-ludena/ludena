@@ -1,4 +1,3 @@
-import dishApiRequest from "@/apiRequests/dish";
 import envConfig, { locales } from "@/config";
 import { generateSlugUrl } from "@/lib/utils";
 
@@ -19,14 +18,10 @@ export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every 1 hour
 
 export async function GET() {
-  let dishList: Array<{ id: number; name: string; updatedAt: Date }> = [];
+  let dishList: Array<{ id: number; name: string; updatedAt: Date }>;
 
-  try {
-    const result = await dishApiRequest.list();
-    dishList = result.payload.data;
-  } catch (error) {
-    console.log("Warning: Could not fetch dishes for sitemap generation:", error);
-  }
+  // Con varios restaurantes, las cartas viven en /r/{slug}. Pendiente: listar restaurantes públicos aquí.
+  dishList = [];
 
   const localizeStaticSiteMap = locales.flatMap((locale) =>
     staticRoutes.map((route) => ({

@@ -1,5 +1,13 @@
 import { createDish, deleteDish, getDishDetail, getDishList, updateDish } from "@/controllers/dish.controller";
-import { pauseApiHook, requireEmployeeHook, requireLoginedHook, requireOwnerHook } from "@/hooks/auth.hooks";
+import {
+  getRequestRestaurantId,
+  pauseApiHook,
+  requireEmployeeHook,
+  requireLoginedHook,
+  requireOwnerHook,
+  resolvePublicRestaurantId,
+} from "@/hooks/auth.hooks";
+import { RestaurantQuery, RestaurantQueryType } from "@/schemaValidations/common.schema";
 import {
   CreateDishBody,
   CreateDishBodyType,
@@ -17,17 +25,20 @@ import { FastifyInstance, FastifyPluginOptions } from "fastify";
 export default async function dishRoutes(fastify: FastifyInstance, _options: FastifyPluginOptions) {
   fastify.get<{
     Reply: DishListResType;
+    Querystring: RestaurantQueryType;
   }>(
     "/",
     {
       schema: {
+        querystring: RestaurantQuery,
         response: {
           200: DishListRes,
         },
       },
     },
     async (request, reply) => {
-      const dishs = await getDishList();
+      const restaurantId = await resolvePublicRestaurantId(request, request.query.restaurant);
+      const dishs = await getDishList(restaurantId);
       reply.send({
         data: dishs as DishListResType["data"],
         message: "Lista de platos obtenida",
@@ -38,18 +49,24 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
   fastify.get<{
     Params: DishParamsType;
     Reply: DishResType;
+    Querystring: RestaurantQueryType;
   }>(
     "/:id",
     {
       schema: {
         params: DishParams,
+        querystring: RestaurantQuery,
         response: {
           200: DishRes,
         },
       },
     },
     async (request, reply) => {
-      const dish = await getDishDetail(request.params.id);
+      // El detalle de un plato es información pública; si llega el restaurante se valida que coincida
+      const restaurantId = request.query.restaurant
+        ? await resolvePublicRestaurantId(request, request.query.restaurant)
+        : undefined;
+      const dish = await getDishDetail(request.params.id, restaurantId);
       reply.send({
         data: dish as DishResType["data"],
         message: "Plato obtenido",
@@ -75,7 +92,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       }),
     },
     async (request, reply) => {
-      const dish = await createDish(request.body);
+      const dish = await createDish(getRequestRestaurantId(request), request.body);
       reply.send({
         data: dish as DishResType["data"],
         message: "Plato creado",
@@ -102,7 +119,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       }),
     },
     async (request, reply) => {
-      const dish = await updateDish(request.params.id, request.body);
+      const dish = await updateDish(getRequestRestaurantId(request), request.params.id, request.body);
       reply.send({
         data: dish as DishResType["data"],
         message: "Plato actualizado",
@@ -127,7 +144,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       }),
     },
     async (request, reply) => {
-      const result = await deleteDish(request.params.id);
+      const result = await deleteDish(getRequestRestaurantId(request), request.params.id);
       reply.send({
         message: "Plato eliminado",
         data: result as DishResType["data"],

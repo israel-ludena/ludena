@@ -2,7 +2,8 @@
   "ErrorMessage": {
     "invalidEmail": "Invalid email",
     "required": "This field is required",
-    "minmaxPassword": "Password must be between 6 and 100 characters"
+    "minmaxPassword": "Password must be between 6 and 100 characters",
+    "slugInvalid": "Use 3 to 60 lowercase letters, numbers or hyphens"
   },
   "TableTable": {
     "tableNumber": "Table number",
@@ -83,14 +84,20 @@
     "hero-title": "Welcome to QR Meal",
     "description": "Craving a classic American diner experience? Look no further than QR Meal! Savor our iconic QR burger, juicy and flavorful, paired with creamy milkshakes and crispy fries. Perfect for families and friends!",
     "slogan": "Taste good, every moment",
-    "h2": "A variety of dishes"
+    "h2": "A variety of dishes",
+    "loadError": "Could not load the menu. Please try again later.",
+    "emptyMenu": "This restaurant has not published any dishes yet."
   },
   "Login": {
     "title": "Login",
     "description": "Manager login area",
     "cardDescription": "Enter your email and password to log in to the system",
     "buttonLogin": "Login",
-    "loginWithGoogle": "Login with Google"
+    "loginWithGoogle": "Login with Google",
+    "email": "Email",
+    "password": "Password",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register your restaurant"
   },
   "DishDetail": {
     "notFound": "Dish not found"
@@ -444,5 +451,36 @@
     "termsChangesContent": "We reserve the right to change these terms of service at any time without prior notice. Your continued use of the service after changes are posted will be considered your acceptance of those changes.",
     "contact": "Contact",
     "contactContent": "If you have any questions about these terms of service, please contact us via email or phone number provided on our website."
+  },
+  "Landing": {
+    "title": "Digital menu for restaurants in Ecuador",
+    "heroTitle": "Your digital menu and table ordering",
+    "description": "Guests scan their table's QR code, browse the menu and order. Orders go straight to the kitchen and you manage everything from one panel.",
+    "ctaRegister": "Register my restaurant",
+    "ctaDemo": "See demo menu",
+    "feature1Title": "One QR per table",
+    "feature1Text": "Each table has its own code. Guests order without installing anything.",
+    "feature2Title": "Real-time orders",
+    "feature2Text": "Kitchen and waiters see every order instantly and mark it as ready.",
+    "feature3Title": "Restaurant panel",
+    "feature3Text": "Dishes, tables, staff, payments and daily sales in one place.",
+    "feature4Title": "Built for Ecuador",
+    "feature4Text": "Prices in US dollars, Ecuador time, and soon SRI invoicing and GoHighLevel integration."
+  },
+  "Register": {
+    "title": "Register your restaurant",
+    "description": "Create your owner account and digital menu in a minute.",
+    "restaurantName": "Restaurant name",
+    "restaurantNamePlaceholder": "The Ceviche House",
+    "slug": "Menu address",
+    "slugHint": "Your menu will be at:",
+    "ownerName": "Your name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone (optional)",
+    "address": "Address (optional)",
+    "submit": "Create restaurant",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in"
   }
 }

@@ -13,16 +13,21 @@ import { comparePassword, hashPassword } from "@/utils/crypto";
 import { EntityError, isPrismaClientKnownRequestError } from "@/utils/errors";
 import { getChalk } from "@/utils/helpers";
 
+// Al arrancar por primera vez crea un restaurante de demostración con su dueño
 export const initOwnerAccount = async () => {
   const accountCount = await prisma.account.count();
   if (accountCount === 0) {
     const hashedPassword = await hashPassword(envConfig.INITIAL_PASSWORD_OWNER);
+    const restaurant = await prisma.restaurant.create({
+      data: { name: "Restaurante Demo", slug: "demo" },
+    });
     await prisma.account.create({
       data: {
-        name: "Owner",
+        name: "Dueño Demo",
         email: envConfig.INITIAL_EMAIL_OWNER,
         password: hashedPassword,
         role: Role.Owner,
+        restaurantId: restaurant.id,
       },
     });
     const chalk = await getChalk();
@@ -34,7 +39,7 @@ export const initOwnerAccount = async () => {
   }
 };
 
-export const createEmployeeAccount = async (body: CreateEmployeeAccountBodyType) => {
+export const createEmployeeAccount = async (restaurantId: number, body: CreateEmployeeAccountBodyType) => {
   try {
     const hashedPassword = await hashPassword(body.password);
     const account = await prisma.account.create({
@@ -44,6 +49,7 @@ export const createEmployeeAccount = async (body: CreateEmployeeAccountBodyType)
         password: hashedPassword,
         role: Role.Employee,
         avatar: body.avatar,
+        restaurantId,
       },
     });
     return account;
@@ -57,10 +63,11 @@ export const createEmployeeAccount = async (body: CreateEmployeeAccountBodyType)
   }
 };
 
-export const getEmployeeAccounts = async () => {
+export const getEmployeeAccounts = async (restaurantId: number) => {
   const accounts = await prisma.account.findMany({
     where: {
       role: Role.Employee,
+      restaurantId,
     },
     orderBy: {
       createdAt: "desc",
@@ -69,17 +76,19 @@ export const getEmployeeAccounts = async () => {
   return accounts;
 };
 
-export const getEmployeeAccount = async (accountId: number) => {
-  const account = await prisma.account.findUniqueOrThrow({
+export const getEmployeeAccount = async (restaurantId: number, accountId: number) => {
+  const account = await prisma.account.findFirstOrThrow({
     where: {
       id: accountId,
+      restaurantId,
     },
   });
   return account;
 };
 
-export const getAccountList = async () => {
+export const getAccountList = async (restaurantId: number) => {
   const account = await prisma.account.findMany({
+    where: { restaurantId },
     orderBy: {
       createdAt: "desc",
     },
@@ -87,8 +96,13 @@ export const getAccountList = async () => {
   return account;
 };
 
-export const updateEmployeeAccount = async (accountId: number, body: UpdateEmployeeAccountBodyType) => {
+export const updateEmployeeAccount = async (
+  restaurantId: number,
+  accountId: number,
+  body: UpdateEmployeeAccountBodyType
+) => {
   try {
+    await getEmployeeAccount(restaurantId, accountId);
     const [socketRecord, oldAccount] = await Promise.all([
       prisma.socket.findUnique({
         where: {
@@ -152,7 +166,8 @@ export const updateEmployeeAccount = async (accountId: number, body: UpdateEmplo
   }
 };
 
-export const deleteEmployeeAccount = async (accountId: number) => {
+export const deleteEmployeeAccount = async (restaurantId: number, accountId: number) => {
+  await getEmployeeAccount(restaurantId, accountId);
   const socketRecord = await prisma.socket.findUnique({
     where: {
       accountId,
@@ -210,12 +225,16 @@ export const changePasswordController = async (accountId: number, body: ChangePa
   return newAccount;
 };
 
-export const getGuestList = async ({ fromDate, toDate }: { fromDate?: Date; toDate?: Date }) => {
+export const getGuestList = async (
+  restaurantId: number,
+  { fromDate, toDate }: { fromDate?: Date; toDate?: Date }
+) => {
   const orders = await prisma.guest.findMany({
     orderBy: {
       createdAt: "desc",
     },
     where: {
+      restaurantId,
       createdAt: {
         gte: fromDate,
         lte: toDate,
@@ -225,10 +244,10 @@ export const getGuestList = async ({ fromDate, toDate }: { fromDate?: Date; toDa
   return orders;
 };
 
-export const createGuestController = async (body: CreateGuestBodyType) => {
+export const createGuestController = async (restaurantId: number, body: CreateGuestBodyType) => {
   const table = await prisma.table.findUnique({
     where: {
-      number: body.tableNumber,
+      restaurantId_number: { restaurantId, number: body.tableNumber },
     },
   });
   if (!table) {
@@ -239,7 +258,12 @@ export const createGuestController = async (body: CreateGuestBodyType) => {
     throw new Error(`La mesa ${table.number} está oculta; elige otra mesa`);
   }
   const guest = await prisma.guest.create({
-    data: body,
+    data: {
+      name: body.name,
+      restaurantId,
+      tableId: table.id,
+      tableNumber: table.number,
+    },
   });
   return guest;
 };

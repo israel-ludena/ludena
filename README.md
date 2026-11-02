@@ -30,9 +30,23 @@ Requisitos: Node.js 24.11.1 y pnpm 10.26.1.
 pnpm install
 cp server/.env.example server/.env   # cambiar los secretos
 cp client/.env.example client/.env
-cd server && pnpm exec prisma generate && pnpm exec prisma db push && cd ..
-pnpm dev
+cd server
+pnpm db:generate     # genera el cliente de Prisma
+pnpm db:push         # crea las tablas en server/dev.db
+cd ..
+pnpm dev             # API en :4008, web en :4007
+# en otra terminal, con el API corriendo:
+cd server && pnpm seed:demo   # datos de ejemplo: /es/r/demo y /es/r/la-cevicheria
 ```
+
+Cuentas de ejemplo: `admin@order.com` / `123456` (Restaurante Demo) y `ana@cevicheria.ec` / `123456` (La Cevichería).
+
+## Cómo funciona multi-restaurante
+
+- Cada restaurante se registra en `/es/register` y obtiene su carta pública en `/es/r/{slug}`.
+- Todos los datos (platos, mesas, pedidos, clientes, personal) llevan `restaurantId`. El servidor toma el restaurante de la sesión del usuario y nunca de lo que envía el navegador.
+- El QR de cada mesa lleva un token único que identifica restaurante y mesa.
+- Los avisos en tiempo real (pedidos, pagos) se envían solo al personal del mismo restaurante.
 
 El README original de QRMeal, con todos los scripts, está en `README.qrmeal-original.md`.
 

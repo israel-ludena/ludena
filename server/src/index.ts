@@ -22,6 +22,7 @@ import guestRoutes from "@/routes/guest.route";
 import orderRoutes from "@/routes/order.route";
 import { socketPlugin } from "@/plugins/socket.plugins";
 import indicatorRoutes from "@/routes/indicator.route";
+import restaurantRoutes from "@/routes/restaurant.route";
 import autoRemoveRefreshTokenJob from "@/jobs/autoRemoveRefreshToken.job";
 
 const fastify = Fastify({
@@ -73,6 +74,9 @@ const start = async () => {
     });
     fastify.register(accountRoutes, {
       prefix: "/accounts",
+    });
+    fastify.register(restaurantRoutes, {
+      prefix: "/restaurants",
     });
     fastify.register(mediaRoutes, {
       prefix: "/media",

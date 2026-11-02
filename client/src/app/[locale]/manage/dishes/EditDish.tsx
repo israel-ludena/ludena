@@ -201,6 +201,8 @@ export default function EditDish({
                           className='w-full'
                           {...field}
                           type='number'
+                          step='0.01'
+                          min='0'
                           value={field.value?.toString() || ""}
                         />
                         <FormMessage />

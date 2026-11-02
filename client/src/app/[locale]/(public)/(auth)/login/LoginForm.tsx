@@ -96,8 +96,8 @@ export default function LoginForm() {
                 render={({ field, formState: { errors } }) => (
                   <FormItem>
                     <div className='grid gap-2'>
-                      <Label htmlFor='email'>Email</Label>
-                      <Input id='email' type='email' placeholder='m@example.com' required {...field} />
+                      <Label htmlFor='email'>{t("email")}</Label>
+                      <Input id='email' type='email' placeholder='correo@turestaurante.ec' required {...field} />
                       <FormMessage>
                         {Boolean(errors.email?.message) && errorMessageT(errors.email?.message as any)}
                       </FormMessage>
@@ -112,7 +112,7 @@ export default function LoginForm() {
                   <FormItem>
                     <div className='grid gap-2'>
                       <div className='flex items-center'>
-                        <Label htmlFor='password'>Password</Label>
+                        <Label htmlFor='password'>{t("password")}</Label>
                       </div>
                       <Input id='password' type='password' required {...field} />
                       <FormMessage>
@@ -131,6 +131,12 @@ export default function LoginForm() {
                   {t("loginWithGoogle")}
                 </Button>
               </Link>
+              <p className='text-muted-foreground text-center text-sm'>
+                {t("noAccount")}{" "}
+                <Link href='/register' className='text-foreground underline'>
+                  {t("registerLink")}
+                </Link>
+              </p>
             </div>
           </form>
         </Form>

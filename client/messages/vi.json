@@ -2,7 +2,8 @@
   "ErrorMessage": {
     "invalidEmail": "Email không hợp lệ",
     "required": "Trường này không được để trống",
-    "minmaxPassword": "Mật khẩu phải từ 6 đến 100 ký tự"
+    "minmaxPassword": "Mật khẩu phải từ 6 đến 100 ký tự",
+    "slugInvalid": "Use 3 to 60 lowercase letters, numbers or hyphens"
   },
   "Brand": {
     "title": "QR Meal",
@@ -85,7 +86,9 @@
     "hero-title": "Chào mừng đến với QR Meal",
     "description": "Khát khao một trải nghiệm ẩm thực Mỹ cổ điển? QR Meal là lựa chọn hoàn hảo! Thưởng thức chiếc QR burger biểu tượng, thơm ngon và đậm đà, cùng với những ly milkshake béo ngậy và khoai tây chiên giòn tan. Hoàn hảo cho các buổi gặp mặt gia đình và bạn bè!",
     "slogan": "Vị ngon, trọn khoảnh khắc",
-    "h2": "Đa dạng các món ăn"
+    "h2": "Đa dạng các món ăn",
+    "loadError": "Could not load the menu. Please try again later.",
+    "emptyMenu": "This restaurant has not published any dishes yet."
   },
   "DishDetail": {
     "notFound": "Món ăn không tồn tại"
@@ -101,7 +104,11 @@
     "description": "Khu vực đăng nhập quản lý",
     "cardDescription": "Nhập email và mật khẩu của bạn để đăng nhập vào hệ thống",
     "buttonLogin": "Đăng nhập",
-    "loginWithGoogle": "Đăng nhập với Google"
+    "loginWithGoogle": "Đăng nhập với Google",
+    "email": "Email",
+    "password": "Password",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register your restaurant"
   },
   "GuestMenu": {
     "title": "Thực đơn",
@@ -446,5 +453,36 @@
     "termsChangesContent": "Chúng tôi có quyền thay đổi các điều khoản dịch vụ này bất kỳ lúc nào mà không cần thông báo trước. Việc tiếp tục sử dụng dịch vụ của bạn sau khi các thay đổi được đăng tải sẽ được coi là sự chấp nhận của bạn đối với các thay đổi đó.",
     "contact": "Liên hệ",
     "contactContent": "Nếu bạn có bất kỳ câu hỏi nào về các điều khoản dịch vụ này, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại được cung cấp trên trang web của chúng tôi."
+  },
+  "Landing": {
+    "title": "Digital menu for restaurants in Ecuador",
+    "heroTitle": "Your digital menu and table ordering",
+    "description": "Guests scan their table's QR code, browse the menu and order. Orders go straight to the kitchen and you manage everything from one panel.",
+    "ctaRegister": "Register my restaurant",
+    "ctaDemo": "See demo menu",
+    "feature1Title": "One QR per table",
+    "feature1Text": "Each table has its own code. Guests order without installing anything.",
+    "feature2Title": "Real-time orders",
+    "feature2Text": "Kitchen and waiters see every order instantly and mark it as ready.",
+    "feature3Title": "Restaurant panel",
+    "feature3Text": "Dishes, tables, staff, payments and daily sales in one place.",
+    "feature4Title": "Built for Ecuador",
+    "feature4Text": "Prices in US dollars, Ecuador time, and soon SRI invoicing and GoHighLevel integration."
+  },
+  "Register": {
+    "title": "Register your restaurant",
+    "description": "Create your owner account and digital menu in a minute.",
+    "restaurantName": "Restaurant name",
+    "restaurantNamePlaceholder": "The Ceviche House",
+    "slug": "Menu address",
+    "slugHint": "Your menu will be at:",
+    "ownerName": "Your name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone (optional)",
+    "address": "Address (optional)",
+    "submit": "Create restaurant",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in"
   }
 }
