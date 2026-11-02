@@ -1,20 +1,36 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-generator dbml {
-  provider = "prisma-dbml-generator"
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+}
+
+// Cada restaurante (cliente del SaaS). Todos los datos operativos cuelgan de aquí.
+model Restaurant {
+  id        Int       @id @default(autoincrement())
+  name      String
+  slug      String    @unique // usado en la URL pública: /r/{slug}
+  address   String?
+  phone     String?
+  logo      String?
+  currency  String    @default("USD")
+  timezone  String    @default("America/Guayaquil")
+  accounts  Account[]
+  dishes    Dish[]
+  tables    Table[]
+  orders    Order[]
+  guests    Guest[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Account {
   id           Int            @id @default(autoincrement())
+  restaurant   Restaurant?    @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId Int?
   name         String
   email        String         @unique
   password     String
@@ -32,8 +48,10 @@ model Account {
 
 model Dish {
   id            Int            @id @default(autoincrement())
+  restaurant    Restaurant     @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId  Int
   name          String
-  price         Int
+  price         Float
   description   String
   image         String
   status        String         @default("Available")
@@ -45,7 +63,7 @@ model Dish {
 model DishSnapshot {
   id          Int      @id @default(autoincrement())
   name        String
-  price       Int
+  price       Float
   description String
   image       String
   status      String   @default("Available")
@@ -57,22 +75,30 @@ model DishSnapshot {
 }
 
 model Table {
-  number    Int      @id
-  capacity  Int
-  orders    Order[]
-  guests    Guest[]
-  status    String   @default("Available")
-  token     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int        @id @default(autoincrement())
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId Int
+  number       Int // número visible de la mesa, único dentro de cada restaurante
+  capacity     Int
+  orders       Order[]
+  guests       Guest[]
+  status       String     @default("Available")
+  token        String     @unique
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@unique([restaurantId, number])
 }
 
 model Order {
   id             Int          @id @default(autoincrement())
+  restaurant     Restaurant   @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId   Int
   guestId        Int?
   guest          Guest?       @relation(fields: [guestId], references: [id], onDelete: SetNull, onUpdate: NoAction)
-  table          Table?       @relation(fields: [tableNumber], references: [number], onDelete: SetNull, onUpdate: NoAction)
-  tableNumber    Int?
+  table          Table?       @relation(fields: [tableId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  tableId        Int?
+  tableNumber    Int? // copia del número de mesa al momento del pedido
   dishSnapshot   DishSnapshot @relation(fields: [dishSnapshotId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   dishSnapshotId Int          @unique
   quantity       Int
@@ -92,10 +118,13 @@ model RefreshToken {
 }
 
 model Guest {
-  id                    Int       @id @default(autoincrement())
+  id                    Int        @id @default(autoincrement())
+  restaurant            Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  restaurantId          Int
   name                  String
-  table                 Table?    @relation(fields: [tableNumber], references: [number], onDelete: SetNull, onUpdate: NoAction)
-  tableNumber           Int?
+  table                 Table?     @relation(fields: [tableId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  tableId               Int?
+  tableNumber           Int? // copia del número de mesa
   orders                Order[]
   refreshToken          String?
   refreshTokenExpiresAt DateTime?

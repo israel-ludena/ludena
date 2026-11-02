@@ -1,4 +1,4 @@
-import { ManagerRoom, Role } from "@/constants/type";
+import { managerRoomOf, Role } from "@/constants/type";
 import {
   guestCreateOrdersController,
   guestGetOrdersController,
@@ -6,7 +6,7 @@ import {
   guestLogoutController,
   guestRefreshTokenController,
 } from "@/controllers/guest.controller";
-import { requireGuestHook, requireLoginedHook } from "@/hooks/auth.hooks";
+import { requireGuestHook, requireLoginedHook, getRequestRestaurantId } from "@/hooks/auth.hooks";
 import {
   LogoutBody,
   LogoutBodyType,
@@ -119,7 +119,7 @@ export default async function guestRoutes(fastify: FastifyInstance, _options: Fa
     async (request, reply) => {
       const guestId = request.decodedAccessToken?.userId as number;
       const result = await guestCreateOrdersController(guestId, request.body);
-      fastify.io.to(ManagerRoom).emit("new-order", result);
+      fastify.io.to(managerRoomOf(getRequestRestaurantId(request))).emit("new-order", result);
       reply.send({
         message: "Pedido realizado",
         data: result as GuestCreateOrdersResType["data"],

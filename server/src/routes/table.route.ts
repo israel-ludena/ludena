@@ -1,5 +1,11 @@
 import { createTable, deleteTable, getTableDetail, getTableList, updateTable } from "@/controllers/table.controller";
-import { pauseApiHook, requireEmployeeHook, requireLoginedHook, requireOwnerHook } from "@/hooks/auth.hooks";
+import {
+  getRequestRestaurantId,
+  pauseApiHook,
+  requireEmployeeHook,
+  requireLoginedHook,
+  requireOwnerHook,
+} from "@/hooks/auth.hooks";
 import {
   CreateTableBody,
   CreateTableBodyType,
@@ -25,9 +31,12 @@ export default async function tablesRoutes(fastify: FastifyInstance, _options: F
           200: TableListRes,
         },
       },
+      preValidation: fastify.auth([requireLoginedHook, [requireOwnerHook, requireEmployeeHook]], {
+        relation: "and",
+      }),
     },
     async (request, reply) => {
-      const Tables = await getTableList();
+      const Tables = await getTableList(getRequestRestaurantId(request));
       reply.send({
         data: Tables as TableListResType["data"],
         message: "Lista de mesas obtenida",
@@ -47,9 +56,12 @@ export default async function tablesRoutes(fastify: FastifyInstance, _options: F
           200: TableRes,
         },
       },
+      preValidation: fastify.auth([requireLoginedHook, [requireOwnerHook, requireEmployeeHook]], {
+        relation: "and",
+      }),
     },
     async (request, reply) => {
-      const Table = await getTableDetail(request.params.number);
+      const Table = await getTableDetail(getRequestRestaurantId(request), request.params.number);
       reply.send({
         data: Table as TableResType["data"],
         message: "Mesa obtenida",
@@ -74,7 +86,7 @@ export default async function tablesRoutes(fastify: FastifyInstance, _options: F
       }),
     },
     async (request, reply) => {
-      const Table = await createTable(request.body);
+      const Table = await createTable(getRequestRestaurantId(request), request.body);
       reply.send({
         data: Table as TableResType["data"],
         message: "Mesa creada",
@@ -101,7 +113,7 @@ export default async function tablesRoutes(fastify: FastifyInstance, _options: F
       }),
     },
     async (request, reply) => {
-      const Table = await updateTable(request.params.number, request.body);
+      const Table = await updateTable(getRequestRestaurantId(request), request.params.number, request.body);
       reply.send({
         data: Table as TableResType["data"],
         message: "Mesa actualizada",
@@ -126,7 +138,7 @@ export default async function tablesRoutes(fastify: FastifyInstance, _options: F
       }),
     },
     async (request, reply) => {
-      const result = await deleteTable(request.params.number);
+      const result = await deleteTable(getRequestRestaurantId(request), request.params.number);
       reply.send({
         message: "Mesa eliminada",
         data: result as TableResType["data"],

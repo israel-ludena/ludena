@@ -8,6 +8,7 @@ onlyBuiltDependencies:
   - '@prisma/engines'
   - '@swc/core'
   - bcrypt
+  - better-sqlite3
   - bufferutil
   - esbuild
   - fastify-socket.io

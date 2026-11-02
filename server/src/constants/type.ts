@@ -46,3 +46,6 @@ export const OrderStatusValues = [
 ] as const;
 
 export const ManagerRoom = "manager" as const;
+
+/** Sala de Socket.IO del personal de un restaurante. Cada restaurante solo recibe sus propios eventos. */
+export const managerRoomOf = (restaurantId: number) => `${ManagerRoom}:${restaurantId}`;

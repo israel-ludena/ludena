@@ -1,5 +1,5 @@
 import { dashboardIndicatorController } from "@/controllers/indicator.controller";
-import { requireEmployeeHook, requireLoginedHook, requireOwnerHook } from "@/hooks/auth.hooks";
+import { getRequestRestaurantId, requireEmployeeHook, requireLoginedHook, requireOwnerHook } from "@/hooks/auth.hooks";
 import {
   DashboardIndicatorQueryParams,
   DashboardIndicatorQueryParamsType,
@@ -27,7 +27,7 @@ export default async function indicatorRoutes(fastify: FastifyInstance, _options
     },
     async (request, reply) => {
       const queryString = request.query;
-      const result = await dashboardIndicatorController(queryString);
+      const result = await dashboardIndicatorController(getRequestRestaurantId(request), queryString);
       reply.send({
         message: "Indicadores obtenidos",
         data: result as DashboardIndicatorResType["data"],

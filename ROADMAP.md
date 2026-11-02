@@ -16,9 +16,11 @@ Cada punto se hace en su propia rama y Pull Request.
 
 ## Fase 2 — Multi-restaurante (SaaS)
 
-- [ ] Modelo `Restaurant` y `restaurantId` en platos, mesas, pedidos y cuentas
-- [ ] URL por local: `/r/{slug}/mesa/{n}`
-- [ ] Registro de nuevo restaurante y aislamiento de datos
+- [x] Modelo `Restaurant` y `restaurantId` en platos, mesas, pedidos, clientes y cuentas
+- [x] Carta pública por local: `/r/{slug}` (el QR de mesa sigue en `/tables/{n}?token=…`)
+- [x] Registro de nuevo restaurante y aislamiento de datos (probado con dos restaurantes)
+- [x] Prisma 7 sin binarios (adaptador SQLite) y precios con decimales
+- [ ] Mostrar el nombre del restaurante en el panel y permitir editar sus datos
 - [ ] Migrar de SQLite a PostgreSQL (Supabase u otro)
 
 ## Fase 3 — Facturación electrónica SRI

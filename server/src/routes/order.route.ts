@@ -1,4 +1,4 @@
-import { ManagerRoom } from "@/constants/type";
+import { managerRoomOf } from "@/constants/type";
 import {
   createOrdersController,
   getOrderDetailController,
@@ -6,7 +6,7 @@ import {
   payOrdersController,
   updateOrderController,
 } from "@/controllers/order.controller";
-import { requireEmployeeHook, requireLoginedHook, requireOwnerHook } from "@/hooks/auth.hooks";
+import { requireEmployeeHook, requireLoginedHook, requireOwnerHook, getRequestRestaurantId } from "@/hooks/auth.hooks";
 import {
   CreateOrdersBody,
   CreateOrdersBodyType,
@@ -49,14 +49,17 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
       },
     },
     async (request, reply) => {
+      const restaurantId = getRequestRestaurantId(request);
+      const room = managerRoomOf(restaurantId);
       const { socketId, orders } = await createOrdersController(
+        restaurantId,
         request.decodedAccessToken?.userId as number,
         request.body
       );
       if (socketId) {
-        fastify.io.to(ManagerRoom).to(socketId).emit("new-order", orders);
+        fastify.io.to(room).to(socketId).emit("new-order", orders);
       } else {
-        fastify.io.to(ManagerRoom).emit("new-order", orders);
+        fastify.io.to(room).emit("new-order", orders);
       }
       reply.send({
         message: `Se crearon ${orders.length} pedidos para el cliente`,
@@ -75,7 +78,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
       },
     },
     async (request, reply) => {
-      const result = await getOrdersController({
+      const result = await getOrdersController(getRequestRestaurantId(request), {
         fromDate: request.query.fromDate,
         toDate: request.query.toDate,
       });
@@ -97,7 +100,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
       },
     },
     async (request, reply) => {
-      const result = await getOrderDetailController(request.params.orderId);
+      const result = await getOrderDetailController(getRequestRestaurantId(request), request.params.orderId);
       reply.send({
         message: "Pedido obtenido",
         data: result as GetOrderDetailResType["data"],
@@ -117,14 +120,16 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
       },
     },
     async (request, reply) => {
-      const result = await updateOrderController(request.params.orderId, {
+      const restaurantId = getRequestRestaurantId(request);
+      const room = managerRoomOf(restaurantId);
+      const result = await updateOrderController(restaurantId, request.params.orderId, {
         ...request.body,
         orderHandlerId: request.decodedAccessToken?.userId as number,
       });
       if (result.socketId) {
-        fastify.io.to(result.socketId).to(ManagerRoom).emit("update-order", result.order);
+        fastify.io.to(result.socketId).to(room).emit("update-order", result.order);
       } else {
-        fastify.io.to(ManagerRoom).emit("update-order", result.order);
+        fastify.io.to(room).emit("update-order", result.order);
       }
       reply.send({
         message: "Pedido actualizado",
@@ -144,14 +149,16 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
       },
     },
     async (request, reply) => {
-      const result = await payOrdersController({
+      const restaurantId = getRequestRestaurantId(request);
+      const room = managerRoomOf(restaurantId);
+      const result = await payOrdersController(restaurantId, {
         guestId: request.body.guestId,
         orderHandlerId: request.decodedAccessToken?.userId as number,
       });
       if (result.socketId) {
-        fastify.io.to(result.socketId).to(ManagerRoom).emit("payment", result.orders);
+        fastify.io.to(result.socketId).to(room).emit("payment", result.orders);
       } else {
-        fastify.io.to(ManagerRoom).emit("payment", result.orders);
+        fastify.io.to(room).emit("payment", result.orders);
       }
       reply.send({
         message: `Se cobraron ${result.orders.length} pedidos`,

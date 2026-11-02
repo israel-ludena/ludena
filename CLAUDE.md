@@ -6,7 +6,7 @@ Este archivo define cómo trabaja Claude en este repositorio. Las reglas de "no 
 
 - Producto: menú digital por QR/NFC por mesa, pedidos desde la mesa, panel del restaurante, 3D/AR, adaptado a Ecuador (SRI, Payphone, WhatsApp) e integrado con GoHighLevel (GHL).
 - Base: fork de QRMeal (MIT, © 2025 BaoGiaDuong), commit `6c2c0cff95633f8b28734484148a5eb2c4a94350`. Ver `NOTICE.md`.
-- Stack: monorepo pnpm + turbo. `client/` Next.js 16 + React 19; `server/` Fastify 5 + Prisma 5 (SQLite por ahora) + Socket.IO.
+- Stack: monorepo pnpm + turbo. `client/` Next.js 16 + React 19; `server/` Fastify 5 + Prisma 7 con adaptador (SQLite por ahora) + Socket.IO. Tablas: `pnpm db:push`; datos de ejemplo: `pnpm seed:demo`.
 - Dueño del producto: Israel Ludeña. Idioma de trabajo: español.
 
 ## Forma de trabajo

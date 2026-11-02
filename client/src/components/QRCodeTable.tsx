@@ -25,7 +25,8 @@ export default function QRCodeTable({
     canvasContext.textAlign = "center";
     canvasContext.fillStyle = "black";
     canvasContext.fillText(`Mesa ${tableNumber}`, width / 2, canvas.width + 20);
-    canvasContext.fillText(`Escanea el código QR para pedir`, width / 2, canvas.width + 50);
+    canvasContext.font = "14px Arial";
+    canvasContext.fillText(`Escanea para ver la carta y pedir`, width / 2, canvas.width + 50, width - 8);
     const virtualCanvas = document.createElement("canvas");
     QRCode.toCanvas(
       virtualCanvas,

@@ -8,13 +8,13 @@ import { signAccessToken, signRefreshToken, verifyRefreshToken } from "@/utils/j
 import { Prisma } from "@prisma/client";
 
 export const guestLoginController = async (body: GuestLoginBodyType) => {
+  // El token del QR es único en todo el sistema y define a qué restaurante entra el cliente
   const table = await prisma.table.findUnique({
     where: {
-      number: body.tableNumber,
       token: body.token,
     },
   });
-  if (!table) {
+  if (!table || table.number !== body.tableNumber) {
     throw new Error("La mesa no existe o el token no es válido");
   }
 
@@ -29,7 +29,9 @@ export const guestLoginController = async (body: GuestLoginBodyType) => {
   let guest = await prisma.guest.create({
     data: {
       name: body.name,
-      tableNumber: body.tableNumber,
+      restaurantId: table.restaurantId,
+      tableId: table.id,
+      tableNumber: table.number,
     },
   });
   const refreshToken = signRefreshToken(
@@ -127,12 +129,12 @@ export const guestCreateOrdersController = async (guestId: number, body: GuestCr
         id: guestId,
       },
     });
-    if (guest.tableNumber === null) {
+    if (guest.tableId === null) {
       throw new Error("Tu mesa fue eliminada; cierra sesión e ingresa en otra mesa");
     }
     const table = await tx.table.findUniqueOrThrow({
       where: {
-        number: guest.tableNumber,
+        id: guest.tableId,
       },
     });
     if (table.status === TableStatus.Hidden) {
@@ -143,11 +145,13 @@ export const guestCreateOrdersController = async (guestId: number, body: GuestCr
     }
     const orders = await Promise.all(
       body.map(async (order) => {
-        const dish = await tx.dish.findUniqueOrThrow({
+        const dish = await tx.dish.findFirst({
           where: {
             id: order.dishId,
+            restaurantId: guest.restaurantId,
           },
         });
+        if (!dish) throw new Error("El plato no existe en este restaurante");
         if (dish.status === DishStatus.Unavailable) {
           throw new Error(`El plato ${dish.name} está agotado`);
         }
@@ -169,7 +173,9 @@ export const guestCreateOrdersController = async (guestId: number, body: GuestCr
             dishSnapshotId: dishSnapshot.id,
             guestId,
             quantity: order.quantity,
-            tableNumber: guest.tableNumber,
+            restaurantId: guest.restaurantId,
+            tableId: table.id,
+            tableNumber: table.number,
             orderHandlerId: null,
             status: OrderStatus.Pending,
           },

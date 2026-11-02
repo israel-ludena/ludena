@@ -2,7 +2,8 @@
   "ErrorMessage": {
     "invalidEmail": "Correo no válido",
     "required": "Este campo es obligatorio",
-    "minmaxPassword": "La contraseña debe tener entre 6 y 100 caracteres"
+    "minmaxPassword": "La contraseña debe tener entre 6 y 100 caracteres",
+    "slugInvalid": "Usa entre 3 y 60 letras minúsculas, números o guiones"
   },
   "TableTable": {
     "tableNumber": "Número de mesa",
@@ -83,14 +84,20 @@
     "hero-title": "Bienvenido",
     "description": "Escanea el código de tu mesa, mira la carta y pide sin esperar. Tu pedido llega directo a la cocina.",
     "slogan": "Pide desde tu mesa",
-    "h2": "Nuestra carta"
+    "h2": "Nuestra carta",
+    "loadError": "No se pudo cargar la carta. Intenta de nuevo en unos minutos.",
+    "emptyMenu": "Este restaurante aún no publica platos."
   },
   "Login": {
     "title": "Iniciar sesión",
     "description": "Acceso para el personal del local",
     "cardDescription": "Ingresa tu correo y contraseña para entrar al sistema",
     "buttonLogin": "Ingresar",
-    "loginWithGoogle": "Ingresar con Google"
+    "loginWithGoogle": "Ingresar con Google",
+    "email": "Correo",
+    "password": "Contraseña",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "registerLink": "Registra tu restaurante"
   },
   "DishDetail": {
     "notFound": "Plato no encontrado"
@@ -444,5 +451,36 @@
     "termsChangesContent": "Podemos actualizar estos términos. Te avisaremos de los cambios relevantes.",
     "contact": "Contacto",
     "contactContent": "Si tienes preguntas sobre estos términos, escríbenos a los datos de contacto del sitio."
+  },
+  "Landing": {
+    "title": "Menú digital para restaurantes en Ecuador",
+    "heroTitle": "Tu carta digital y pedidos desde la mesa",
+    "description": "Tus clientes escanean el QR de su mesa, ven la carta y piden. El pedido llega directo a cocina y tú controlas todo desde un solo panel.",
+    "ctaRegister": "Registrar mi restaurante",
+    "ctaDemo": "Ver carta de demostración",
+    "feature1Title": "QR por mesa",
+    "feature1Text": "Cada mesa tiene su propio código. El cliente pide sin descargar nada.",
+    "feature2Title": "Pedidos en tiempo real",
+    "feature2Text": "La cocina y los meseros ven cada pedido al instante y lo marcan como listo.",
+    "feature3Title": "Panel del restaurante",
+    "feature3Text": "Platos, mesas, personal, cobros y ventas del día en un solo lugar.",
+    "feature4Title": "Hecho para Ecuador",
+    "feature4Text": "Precios en dólares, hora de Ecuador y próximamente facturación SRI e integración con GoHighLevel."
+  },
+  "Register": {
+    "title": "Registra tu restaurante",
+    "description": "Crea tu cuenta de dueño y tu carta digital en un minuto.",
+    "restaurantName": "Nombre del restaurante",
+    "restaurantNamePlaceholder": "La Casa del Ceviche",
+    "slug": "Dirección de tu carta",
+    "slugHint": "Tu carta quedará en:",
+    "ownerName": "Tu nombre",
+    "email": "Correo",
+    "password": "Contraseña",
+    "phone": "Teléfono (opcional)",
+    "address": "Dirección del local (opcional)",
+    "submit": "Crear restaurante",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "loginLink": "Inicia sesión"
   }
 }

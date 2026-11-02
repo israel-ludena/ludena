@@ -1,4 +1,5 @@
-import { ManagerRoom, Role } from "@/constants/type";
+import { managerRoomOf, Role } from "@/constants/type";
+import { getRestaurantIdForUser } from "@/hooks/auth.hooks";
 import prisma from "@/database";
 import { AuthError } from "@/utils/errors";
 import { getChalk } from "@/utils/helpers";
@@ -47,7 +48,8 @@ export const socketPlugin = fastifyPlugin(async (fastify) => {
             socketId: socket.id,
           },
         });
-        socket.join(ManagerRoom);
+        // Cada miembro del personal solo escucha los eventos de su restaurante
+        socket.join(managerRoomOf(await getRestaurantIdForUser(decodedAccessToken)));
       }
       socket.handshake.auth.decodedAccessToken = decodedAccessToken;
     } catch (error: unknown) {

@@ -11,7 +11,7 @@ import {
   updateEmployeeAccount,
   updateMeController,
 } from "@/controllers/account.controller";
-import { pauseApiHook, requireEmployeeHook, requireLoginedHook, requireOwnerHook } from "@/hooks/auth.hooks";
+import { pauseApiHook, requireEmployeeHook, requireLoginedHook, requireOwnerHook, getRequestRestaurantId } from "@/hooks/auth.hooks";
 import {
   AccountIdParam,
   AccountIdParamType,
@@ -51,7 +51,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
       preValidation: fastify.auth([requireOwnerHook]),
     },
     async (request, reply) => {
-      const accounts = await getAccountList();
+      const accounts = await getAccountList(getRequestRestaurantId(request));
       reply.send({
         data: accounts as AccountListResType["data"],
         message: "Lista del personal obtenida",
@@ -73,7 +73,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
       preValidation: fastify.auth([requireOwnerHook, pauseApiHook]),
     },
     async (request, reply) => {
-      const account = await createEmployeeAccount(request.body);
+      const account = await createEmployeeAccount(getRequestRestaurantId(request), request.body);
       reply.send({
         data: account as AccountResType["data"],
         message: "Cuenta creada",
@@ -93,7 +93,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
     },
     async (request, reply) => {
       const accountId = request.params.id;
-      const account = await getEmployeeAccount(accountId);
+      const account = await getEmployeeAccount(getRequestRestaurantId(request), accountId);
       reply.send({
         data: account as AccountResType["data"],
         message: "Empleado obtenido",
@@ -116,7 +116,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
     async (request, reply) => {
       const accountId = request.params.id;
       const body = request.body;
-      const { account, socketId, isChangeRole } = await updateEmployeeAccount(accountId, body);
+      const { account, socketId, isChangeRole } = await updateEmployeeAccount(getRequestRestaurantId(request), accountId, body);
       if (isChangeRole && socketId) {
         fastify.io.to(socketId).emit("refresh-token", account);
       }
@@ -140,7 +140,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
     },
     async (request, reply) => {
       const accountId = request.params.id;
-      const { account, socketId } = await deleteEmployeeAccount(accountId);
+      const { account, socketId } = await deleteEmployeeAccount(getRequestRestaurantId(request), accountId);
       if (socketId) {
         fastify.io.to(socketId).emit("logout", account);
       }
@@ -229,7 +229,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
       }),
     },
     async (request, reply) => {
-      const result = await createGuestController(request.body);
+      const result = await createGuestController(getRequestRestaurantId(request), request.body);
       reply.send({
         message: "Cliente creado",
         data: { ...result, role: Role.Guest } as CreateGuestResType["data"],
@@ -250,7 +250,7 @@ export default async function accountRoutes(fastify: FastifyInstance, _options: 
       }),
     },
     async (request, reply) => {
-      const result = await getGuestList({
+      const result = await getGuestList(getRequestRestaurantId(request), {
         fromDate: request.query.fromDate,
         toDate: request.query.toDate,
       });

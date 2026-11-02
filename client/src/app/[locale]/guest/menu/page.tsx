@@ -37,9 +37,10 @@ export async function generateMetadata({ params, searchParams: _searchParams }: 
 }
 
 export default async function MenuPage() {
+  const t = await getTranslations("GuestMenu");
   return (
     <div className='mx-auto max-w-[400px] space-y-4'>
-      <h1 className='text-center text-xl font-bold'>🍕 Menu</h1>
+      <h1 className='text-center text-xl font-bold'>{t("title")}</h1>
       <MenuOrder />
     </div>
   );
