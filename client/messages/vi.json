@@ -1,0 +1,449 @@
+{
+  "ErrorMessage": {
+    "invalidEmail": "Email không hợp lệ",
+    "required": "Trường này không được để trống",
+    "minmaxPassword": "Mật khẩu phải từ 6 đến 100 ký tự"
+  },
+  "Brand": {
+    "title": "QR Meal",
+    "defaultTitle": "QR Meal"
+  },
+  "OrderTable": {
+    "from": "Từ",
+    "to": "Đến",
+    "fromDate": "Từ ngày",
+    "toDate": "Đến ngày",
+    "reset": "Reset",
+    "guestName": "Tên khách",
+    "tableNumber": "Số bàn",
+    "status": "Trạng thái",
+    "showing": "Hiển thị",
+    "of": "trong",
+    "results": "kết quả",
+    "noResults": "Không có kết quả.",
+    "orderUpdated": "Món {dishName} (SL: {quantity}) vừa được cập nhật sang trạng thái {status}",
+    "newOrderPlaced": "{guestName} tại bàn {tableNumber} vừa đặt {orderCount} đơn",
+    "paymentSuccessful": "{guestName} tại bàn {tableNumber} thanh toán thành công {orderCount} đơn"
+  },
+  "ChangePasswordForm": {
+    "changePassword": "Đổi mật khẩu",
+    "oldPassword": "Mật khẩu cũ",
+    "newPassword": "Mật khẩu mới",
+    "confirmNewPassword": "Nhập lại mật khẩu mới",
+    "cancel": "Hủy",
+    "save": "Lưu thông tin"
+  },
+  "UpdateProfileForm": {
+    "personalInfo": "Thông tin cá nhân",
+    "upload": "Upload",
+    "name": "Tên",
+    "cancel": "Hủy",
+    "save": "Lưu thông tin"
+  },
+  "TableTable": {
+    "tableNumber": "Số bàn",
+    "capacity": "Sức chứa",
+    "status": "Trạng thái",
+    "qrCode": "QR Code",
+    "actions": "Actions",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "deleteTableTitle": "Xóa bàn ăn?",
+    "deleteTableDescription": "Bàn",
+    "willBeDeletedPermanently": "sẽ bị xóa vĩnh viễn",
+    "cancel": "Hủy",
+    "continue": "Tiếp tục",
+    "showing": "Hiển thị",
+    "of": "trong",
+    "results": "kết quả",
+    "filterTableNumber": "Lọc số bàn"
+  },
+  "AddTable": {
+    "addTable": "Thêm bàn",
+    "addTableTitle": "Thêm bàn",
+    "tableNumber": "Số hiệu bàn",
+    "capacity": "Lượng khách cho phép",
+    "status": "Trạng thái",
+    "selectStatus": "Chọn trạng thái",
+    "add": "Thêm"
+  },
+  "EditTable": {
+    "editTable": "Sửa bàn",
+    "editTableTitle": "Sửa bàn",
+    "tableNumber": "Số hiệu bàn",
+    "capacity": "Sức chứa (người)",
+    "status": "Trạng thái",
+    "selectStatus": "Chọn trạng thái",
+    "update": "Cập nhật bàn ăn",
+    "changeQRCode": "Đổi QR Code",
+    "qrCode": "QR Code",
+    "orderUrl": "URL gọi món",
+    "save": "Lưu"
+  },
+  "HomePage": {
+    "title": "Trang chủ",
+    "hero-title": "Chào mừng đến với QR Meal",
+    "description": "Khát khao một trải nghiệm ẩm thực Mỹ cổ điển? QR Meal là lựa chọn hoàn hảo! Thưởng thức chiếc QR burger biểu tượng, thơm ngon và đậm đà, cùng với những ly milkshake béo ngậy và khoai tây chiên giòn tan. Hoàn hảo cho các buổi gặp mặt gia đình và bạn bè!",
+    "slogan": "Vị ngon, trọn khoảnh khắc",
+    "h2": "Đa dạng các món ăn"
+  },
+  "DishDetail": {
+    "notFound": "Món ăn không tồn tại"
+  },
+  "LoginGuest": {
+    "title": "Đăng nhập để gọi món",
+    "description": "Nhập thông tin đăng nhập để thực hiện gọi món",
+    "yourname": "Tên của bạn",
+    "login": "Đăng nhập"
+  },
+  "Login": {
+    "title": "Đăng nhập",
+    "description": "Khu vực đăng nhập quản lý",
+    "cardDescription": "Nhập email và mật khẩu của bạn để đăng nhập vào hệ thống",
+    "buttonLogin": "Đăng nhập",
+    "loginWithGoogle": "Đăng nhập với Google"
+  },
+  "GuestMenu": {
+    "title": "Thực đơn",
+    "description": "Chọn món ăn yêu thích của bạn"
+  },
+  "GuestOrders": {
+    "orders": "Đơn hàng",
+    "paidOrders": "Đơn đã thanh toán",
+    "unpaidOrders": "Đơn chưa thanh toán",
+    "item": "Món",
+    "placeOrder": "Đặt món"
+  },
+  "ManageAccounts": {
+    "title": "Quản lý tài khoản",
+    "description": "Quản lý tài khoản nhân viên"
+  },
+  "Dashboard": {
+    "title": "Bảng điều khiển",
+    "description": "Xem và phân tích dữ liệu bán hàng"
+  },
+  "Dishes": {
+    "title": "Món ăn",
+    "description": "Quản lý món ăn"
+  },
+  "Orders": {
+    "title": "Đơn hàng",
+    "description": "Quản lý đơn hàng"
+  },
+  "Setting": {
+    "title": "Cài đặt",
+    "description": "Quản lý cài đặt tài khoản của bạn"
+  },
+  "Tables": {
+    "title": "Bàn ăn",
+    "description": "Quản lý bàn ăn"
+  },
+  "SwitchLanguage": {
+    "title": "Chuyển ngôn ngữ",
+    "en": "Tiếng Anh",
+    "vi": "Tiếng Việt"
+  },
+  "NavItem": {
+    "home": "Trang chủ",
+    "menu": "Thực đơn",
+    "orders": "Đơn hàng",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "manage": "Quản lý",
+    "logoutDialog": {
+      "logoutQuestion": "Bạn có chắc chắn muốn đăng xuất?",
+      "logoutCancel": "Hủy",
+      "logoutConfirm": "Đăng xuất có thể dẫn đến mất dữ liệu đơn hàng của bạn"
+    }
+  },
+  "toast": {
+    "logoutSuccess": "Đăng xuất thành công",
+    "somethingWentWrong": "Có lỗi xảy ra",
+    "errorOccurred": "Có lỗi xảy ra",
+    "orderUpdated": "Món {dishName} (SL: {quantity}) vừa được cập nhật sang trạng thái {status}",
+    "paymentSuccess": "Bạn đã thanh toán thành công {orderCount} đơn"
+  },
+  "settings": {
+    "setting": "Cài đặt",
+    "help": "Trợ giúp",
+    "logout": "Đăng xuất"
+  },
+  "Menu": {
+    "dashboard": "Bảng điều khiển",
+    "orders": "Đơn hàng",
+    "tables": "Bàn ăn",
+    "dishes": "Món ăn",
+    "accounts": "Nhân viên"
+  },
+  "DashboardPage": {
+    "title": "Bảng điều khiển",
+    "description": "Xem và phân tích dữ liệu bán hàng",
+    "cardTitle": "Dashboard",
+    "cardDescription": "Phân tích các chỉ số"
+  },
+  "AccountsPage": {
+    "title": "Quản lý tài khoản",
+    "description": "Quản lý tài khoản nhân viên",
+    "cardTitle": "Tài khoản",
+    "cardDescription": "Quản lý tài khoản nhân viên"
+  },
+  "DishesPage": {
+    "title": "Món ăn",
+    "description": "Quản lý món ăn",
+    "cardTitle": "Món ăn",
+    "cardDescription": "Quản lý món ăn"
+  },
+  "OrdersPage": {
+    "title": "Đơn hàng",
+    "description": "Quản lý đơn hàng",
+    "cardTitle": "Đơn hàng",
+    "cardDescription": "Quản lý đơn hàng"
+  },
+  "SettingPage": {
+    "title": "Cài đặt",
+    "description": "Quản lý cài đặt tài khoản của bạn",
+    "pageTitle": "Cài đặt",
+    "ownerBadge": "Owner"
+  },
+  "TablesPage": {
+    "title": "Bàn ăn",
+    "description": "Quản lý bàn ăn",
+    "cardTitle": "Bàn ăn",
+    "cardDescription": "Quản lý bàn ăn"
+  },
+  "AccountTable": {
+    "columnName": "Tên",
+    "actions": "Actions",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "filterEmails": "Tìm email...",
+    "noResults": "Không có kết quả.",
+    "showing": "Hiển thị",
+    "of": "trong",
+    "results": "kết quả",
+    "deleteEmployeeTitle": "Xóa nhân viên?",
+    "deleteEmployeeDescription": "sẽ bị xóa vĩnh viễn",
+    "cancel": "Hủy",
+    "continue": "Tiếp tục",
+    "createAccount": "Tạo tài khoản"
+  },
+  "AddEmployee": {
+    "createAccount": "Tạo tài khoản",
+    "title": "Tạo tài khoản",
+    "description": "Các trường tên, email, mật khẩu là bắt buộc",
+    "name": "Tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "upload": "Upload",
+    "add": "Thêm"
+  },
+  "EditEmployee": {
+    "updateAccount": "Cập nhật tài khoản",
+    "title": "Cập nhật tài khoản",
+    "description": "Các trường tên, email, mật khẩu là bắt buộc",
+    "name": "Tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "changePassword": "Đổi mật khẩu",
+    "role": "Vai trò",
+    "upload": "Upload",
+    "update": "Cập nhật"
+  },
+  "DashboardMain": {
+    "from": "Từ",
+    "to": "Đến",
+    "fromDate": "Từ ngày",
+    "toDate": "Đến ngày",
+    "reset": "Reset",
+    "totalRevenue": "Tổng doanh thu",
+    "guests": "Khách",
+    "orderFood": "Gọi món",
+    "orders": "Đơn hàng",
+    "paid": "Đã thanh toán",
+    "servingTables": "Bàn đang phục vụ"
+  },
+  "DishBarChart": {
+    "dishRanking": "Xếp hạng món ăn",
+    "mostOrdered": "Được gọi nhiều nhất",
+    "paidOrders": "Đơn thanh toán: "
+  },
+  "RevenueLineChart": {
+    "revenue": "Doanh thu"
+  },
+  "DishTable": {
+    "image": "Ảnh",
+    "name": "Tên",
+    "price": "Giá cả",
+    "dishDescription": "Mô tả",
+    "status": "Trạng thái",
+    "actions": "Actions",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "filterName": "Lọc món ăn",
+    "noResults": "Không có kết quả.",
+    "showing": "Hiển thị",
+    "of": "trong",
+    "results": "kết quả",
+    "deleteDishTitle": "Xóa món ăn?",
+    "deleteDishDescription": "Món",
+    "willBeDeletedPermanently": "sẽ bị xóa vĩnh viễn",
+    "cancel": "Hủy",
+    "continue": "Tiếp tục"
+  },
+  "AddDish": {
+    "addDish": "Thêm món ăn",
+    "addDishTitle": "Thêm món ăn",
+    "createDish": "Tạo món ăn",
+    "title": "Tạo món ăn",
+    "dialogDescription": "Các trường tên, giá là bắt buộc",
+    "dishImage": "Ảnh món ăn",
+    "dishName": "Tên món ăn",
+    "name": "Tên",
+    "price": "Giá",
+    "description": "Mô tả sản phẩm",
+    "dishDescription": "Mô tả",
+    "status": "Trạng thái",
+    "selectStatus": "Chọn trạng thái",
+    "upload": "Upload",
+    "add": "Thêm"
+  },
+  "EditDish": {
+    "updateDish": "Cập nhật món ăn",
+    "title": "Cập nhật món ăn",
+    "dialogDescription": "Các trường tên, giá là bắt buộc",
+    "dishImage": "Ảnh món ăn",
+    "name": "Tên",
+    "price": "Giá",
+    "dishDescription": "Mô tả",
+    "status": "Trạng thái",
+    "selectStatus": "Chọn trạng thái",
+    "upload": "Upload",
+    "update": "Cập nhật"
+  },
+  "OrderTableColumns": {
+    "table": "Bàn",
+    "customer": "Khách hàng",
+    "deleted": "Đã bị xóa",
+    "dish": "Món ăn",
+    "status": "Trạng thái",
+    "orderHandler": "Người xử lý",
+    "createdUpdated": "Tạo/Cập nhật",
+    "actions": "Actions",
+    "edit": "Sửa",
+    "noResults": "Không có kết quả.",
+    "showing": "Hiển thị",
+    "of": "trong",
+    "results": "kết quả"
+  },
+  "AddOrder": {
+    "createOrder": "Tạo đơn hàng",
+    "newCustomer": "Khách hàng mới",
+    "customerName": "Tên khách hàng",
+    "selectTable": "Chọn bàn",
+    "selectedCustomer": "Khách đã chọn",
+    "table": "Bàn",
+    "outOfStock": "Hết hàng",
+    "order": "Đặt hàng",
+    "items": "món",
+    "selectCustomer": "Hãy chọn một khách hàng"
+  },
+  "OrderStatics": {
+    "pending": "Đang chờ",
+    "preparing": "Đang chuẩn bị",
+    "served": "Đã phục vụ",
+    "rejected": "Đã từ chối",
+    "paid": "Đã thanh toán",
+    "orders": "đơn",
+    "table": "Bàn",
+    "guest": "Khách",
+    "ready": "Sẵn sàng"
+  },
+  "OrderGuestDetail": {
+    "customerInfo": "Thông tin khách hàng",
+    "orders": "Đơn hàng",
+    "total": "Tổng cộng",
+    "name": "Tên",
+    "table": "Bàn",
+    "registrationDate": "Ngày đăng ký",
+    "unpaid": "Chưa thanh toán",
+    "paid": "Đã thanh toán",
+    "payAll": "Thanh toán tất cả",
+    "quantity": "Tổng",
+    "created": "Tạo",
+    "updated": "Cập nhật"
+  },
+  "EditOrder": {
+    "updateOrder": "Cập nhật đơn hàng",
+    "orderInfo": "Thông tin đơn hàng",
+    "customer": "Khách hàng",
+    "table": "Bàn",
+    "dish": "Món ăn",
+    "quantity": "Số lượng",
+    "status": "Trạng thái",
+    "orderHandler": "Người xử lý",
+    "update": "Cập nhật"
+  },
+  "GuestsDialog": {
+    "selectCustomer": "Chọn khách hàng",
+    "search": "Tên hoặc Id",
+    "name": "Tên",
+    "tableNumber": "Số bàn",
+    "created": "Tạo"
+  },
+  "TablesDialog": {
+    "selectTable": "Chọn bàn",
+    "tableNumber": "Số bàn",
+    "capacity": "Sức chứa",
+    "status": "Trạng thái",
+    "filterTableNumber": "Lọc số bàn"
+  },
+  "DishesDialog": {
+    "selectDish": "Chọn món ăn",
+    "change": "Thay đổi",
+    "dish": "Món ăn",
+    "price": "Giá cả",
+    "status": "Trạng thái",
+    "filterName": "Lọc tên"
+  },
+  "Footer": {
+    "termOfService": "Điều khoản dịch vụ",
+    "privacyPolicy": "Chính sách bảo mật",
+    "about": "Về chúng tôi"
+  },
+  "AboutPage": {
+    "title": "Về nhà hàng của chúng tôi",
+    "address": "Địa chỉ: 456 Phố Ẩm Thực, Khu Vực Trung Tâm, Thành phố Hồ Chí Minh",
+    "ourStory": "Câu chuyện của chúng tôi",
+    "storyContent": "Nhà hàng của chúng tôi được thành lập vào năm 2010 với một sứ mệnh đơn giản: phục vụ món ăn ngon, chất lượng cao để gắn kết mọi người lại với nhau. Niềm đam mê của chúng tôi đối với nguyên liệu đặc biệt và công thức sáng tạo đã đưa chúng tôi trở thành một tổ chức địa phương được yêu thích, nổi tiếng với cam kết tạo ra những bữa ăn nuôi dưỡng cơ thể và tâm hồn.",
+    "ourValues": "Giá trị của chúng tôi",
+    "valuesContent": "Tại trung tâm của nhà hàng chúng tôi là sự cống hiến sâu sắc cho tính bền vững, cộng đồng và sự xuất sắc trong ẩm thực. Chúng tôi lấy nguyên liệu từ các nông dân và nhà sản xuất địa phương, đảm bảo sự tươi mới và hỗ trợ nền kinh tế địa phương. Đội ngũ của chúng tôi đam mê tạo ra những món ăn không chỉ làm hài lòng vị giác mà còn nuôi dưỡng cơ thể, với sự tập trung vào thực phẩm lành mạnh, không qua chế biến.",
+    "ourCommitment": "Cam kết của chúng tôi",
+    "commitmentContent": "Chúng tôi tin rằng món ăn ngon có sức mạnh gắn kết mọi người lại với nhau và tạo ra những kỷ niệm lâu dài. Đó là lý do tại sao chúng tôi cam kết cung cấp một trải nghiệm ẩm thực tuyệt vời, từ lúc bạn bước qua cửa cho đến miếng cuối cùng của bữa ăn. Các đầu bếp tài năng của chúng tôi làm việc không ngừng để tạo ra những món ăn thể hiện tốt nhất các nguyên liệu theo mùa, được lấy từ địa phương, đảm bảo rằng mỗi đĩa ăn là một lễ kỷ niệm của hương vị và chất lượng."
+  },
+  "PrivacyPolicyPage": {
+    "title": "Chính sách bảo mật",
+    "dataCollection": "Dữ liệu thu thập",
+    "dataCollectionContent": "Chúng tôi thu thập các thông tin cá nhân mà bạn cung cấp khi tạo tài khoản, đặt hàng hoặc liên hệ với chúng tôi. Các thông tin này có thể bao gồm tên. Ngoài ra, chúng tôi cũng thu thập một số thông tin tự động khi bạn truy cập trang web của chúng tôi, như địa chỉ IP và loại trình duyệt.",
+    "dataUsage": "Mục đích sử dụng",
+    "dataUsageContent": "Chúng tôi sử dụng thông tin cá nhân của bạn với các mục đích sau:",
+    "processOrders": "Để xử lý đơn hàng của bạn: Chúng tôi sử dụng thông tin liên hệ và thanh toán của bạn để xác nhận và xử lý đơn hàng, cũng như để gửi hóa đơn và thông tin giao hàng.",
+    "customerService": "Để cung cấp dịch vụ khách hàng: Chúng tôi sử dụng thông tin liên hệ của bạn để trả lời các câu hỏi, giải quyết các vấn đề và cung cấp hỗ trợ kỹ thuật.",
+    "marketing": "Để gửi các thông tin tiếp thị: Với sự đồng ý của bạn, chúng tôi có thể sử dụng địa chỉ email của bạn để gửi các thông tin về các sản phẩm, dịch vụ mới, khuyến mãi và sự kiện đặc biệt.",
+    "serviceImprovement": "Để cải thiện dịch vụ của chúng tôi: Chúng tôi sử dụng dữ liệu tổng hợp và ẩn danh để phân tích xu hướng và cải thiện dịch vụ của chúng tôi."
+  },
+  "TermsOfServicePage": {
+    "title": "Điều khoản dịch vụ",
+    "introduction": "Giới thiệu",
+    "introductionContent": "Chào mừng bạn đến với trang Điều khoản dịch vụ của chúng tôi. Khi sử dụng dịch vụ của chúng tôi, bạn đồng ý tuân thủ các điều khoản và điều kiện dưới đây.",
+    "serviceUsage": "Sử dụng dịch vụ",
+    "serviceUsageContent": "Bạn đồng ý sử dụng dịch vụ của chúng tôi chỉ cho các mục đích hợp pháp và không vi phạm bất kỳ luật lệ nào. Bạn không được sử dụng dịch vụ của chúng tôi để phát tán nội dung bất hợp pháp, gây hại hoặc vi phạm quyền riêng tư của người khác.",
+    "intellectualProperty": "Quyền sở hữu trí tuệ",
+    "intellectualPropertyContent": "Tất cả nội dung và tài liệu trên trang web của chúng tôi, bao gồm văn bản, hình ảnh, đồ họa, logo, và phần mềm, đều thuộc quyền sở hữu của chúng tôi hoặc các bên cấp phép của chúng tôi và được bảo vệ bởi luật sở hữu trí tuệ.",
+    "termsChanges": "Thay đổi điều khoản",
+    "termsChangesContent": "Chúng tôi có quyền thay đổi các điều khoản dịch vụ này bất kỳ lúc nào mà không cần thông báo trước. Việc tiếp tục sử dụng dịch vụ của bạn sau khi các thay đổi được đăng tải sẽ được coi là sự chấp nhận của bạn đối với các thay đổi đó.",
+    "contact": "Liên hệ",
+    "contactContent": "Nếu bạn có bất kỳ câu hỏi nào về các điều khoản dịch vụ này, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại được cung cấp trên trang web của chúng tôi."
+  }
+}

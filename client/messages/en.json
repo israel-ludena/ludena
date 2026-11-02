@@ -1,0 +1,447 @@
+{
+  "ErrorMessage": {
+    "invalidEmail": "Invalid email",
+    "required": "This field is required",
+    "minmaxPassword": "Password must be between 6 and 100 characters"
+  },
+  "TableTable": {
+    "tableNumber": "Table number",
+    "capacity": "Capacity",
+    "status": "Status",
+    "qrCode": "QR Code",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteTableTitle": "Delete table?",
+    "deleteTableDescription": "Table",
+    "willBeDeletedPermanently": "will be permanently deleted",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "filterTableNumber": "Filter table number"
+  },
+  "AddTable": {
+    "addTable": "Add table",
+    "addTableTitle": "Add table",
+    "tableNumber": "Table number",
+    "capacity": "Guest capacity",
+    "status": "Status",
+    "selectStatus": "Select status",
+    "add": "Add"
+  },
+  "EditTable": {
+    "update": "Update Table",
+    "tableNumber": "Table Number",
+    "capacity": "Capacity (people)",
+    "status": "Status",
+    "selectStatus": "Select status",
+    "changeQRCode": "Change QR Code",
+    "qrCode": "QR Code",
+    "orderUrl": "Order URL",
+    "save": "Save"
+  },
+  "Brand": {
+    "title": "QR Meal",
+    "defaultTitle": "QR Meal"
+  },
+  "OrderTable": {
+    "from": "From",
+    "to": "To",
+    "fromDate": "From date",
+    "toDate": "To date",
+    "reset": "Reset",
+    "guestName": "Guest name",
+    "tableNumber": "Table number",
+    "status": "Status",
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "noResults": "No results.",
+    "orderUpdated": "Order {dishName} (Qty: {quantity}) has been updated to {status}",
+    "newOrderPlaced": "{guestName} at table {tableNumber} just placed {orderCount} orders",
+    "paymentSuccessful": "{guestName} at table {tableNumber} successfully paid for {orderCount} orders"
+  },
+  "ChangePasswordForm": {
+    "changePassword": "Change password",
+    "oldPassword": "Old password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
+    "cancel": "Cancel",
+    "save": "Save information"
+  },
+  "UpdateProfileForm": {
+    "personalInfo": "Personal information",
+    "upload": "Upload",
+    "name": "Name",
+    "cancel": "Cancel",
+    "save": "Save information"
+  },
+  "HomePage": {
+    "title": "Home page",
+    "hero-title": "Welcome to QR Meal",
+    "description": "Craving a classic American diner experience? Look no further than QR Meal! Savor our iconic QR burger, juicy and flavorful, paired with creamy milkshakes and crispy fries. Perfect for families and friends!",
+    "slogan": "Taste good, every moment",
+    "h2": "A variety of dishes"
+  },
+  "Login": {
+    "title": "Login",
+    "description": "Manager login area",
+    "cardDescription": "Enter your email and password to log in to the system",
+    "buttonLogin": "Login",
+    "loginWithGoogle": "Login with Google"
+  },
+  "DishDetail": {
+    "notFound": "Dish not found"
+  },
+  "LoginGuest": {
+    "title": "Login to order",
+    "description": "Enter login information to place an order",
+    "yourname": "Your name",
+    "login": "Login"
+  },
+  "GuestMenu": {
+    "title": "Menu",
+    "description": "Choose your favorite dishes"
+  },
+  "GuestOrders": {
+    "orders": "Orders",
+    "paidOrders": "Paid orders",
+    "unpaidOrders": "Unpaid orders",
+    "item": "Item",
+    "placeOrder": "Place order"
+  },
+  "ManageAccounts": {
+    "title": "Manage accounts",
+    "description": "Manage employee accounts"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "description": "View and analyze sales data"
+  },
+  "Dishes": {
+    "title": "Dishes",
+    "description": "Manage dishes"
+  },
+  "Orders": {
+    "title": "Orders",
+    "description": "Manage orders"
+  },
+  "Setting": {
+    "title": "Setting",
+    "description": "Manage your account settings"
+  },
+  "Tables": {
+    "title": "Tables",
+    "description": "Manage tables"
+  },
+  "SwitchLanguage": {
+    "title": "Switch language",
+    "en": "English",
+    "vi": "Vietnamese"
+  },
+  "NavItem": {
+    "home": "Home",
+    "menu": "Menu",
+    "orders": "Orders",
+    "login": "Login",
+    "logout": "Logout",
+    "manage": "Manage",
+    "logoutDialog": {
+      "logoutQuestion": "Are you sure you want to log out?",
+      "logoutCancel": "Cancel",
+      "logoutConfirm": "Signing out may result in loss of your orders"
+    }
+  },
+  "toast": {
+    "logoutSuccess": "Logout successful",
+    "somethingWentWrong": "Something went wrong",
+    "errorOccurred": "An error occurred",
+    "orderUpdated": "Dish {dishName} (Qty: {quantity}) has been updated to {status}",
+    "paymentSuccess": "You have successfully paid for {orderCount} orders"
+  },
+  "settings": {
+    "setting": "Setting",
+    "help": "Help",
+    "logout": "Logout"
+  },
+  "Menu": {
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "tables": "Tables",
+    "dishes": "Dishes",
+    "accounts": "Employees"
+  },
+  "DashboardPage": {
+    "title": "Dashboard",
+    "description": "Analyze metrics",
+    "cardTitle": "Dashboard",
+    "cardDescription": "Analyze metrics"
+  },
+  "AccountsPage": {
+    "title": "Manage accounts",
+    "description": "Manage employee accounts",
+    "cardTitle": "Accounts",
+    "cardDescription": "Manage employee accounts"
+  },
+  "DishesPage": {
+    "title": "Dishes",
+    "description": "Manage dishes",
+    "cardTitle": "Dishes",
+    "cardDescription": "Manage dishes"
+  },
+  "OrdersPage": {
+    "title": "Orders",
+    "description": "Manage orders",
+    "cardTitle": "Orders",
+    "cardDescription": "Manage orders"
+  },
+  "SettingPage": {
+    "title": "Setting",
+    "description": "Manage your account settings",
+    "pageTitle": "Settings",
+    "ownerBadge": "Owner"
+  },
+  "TablesPage": {
+    "title": "Tables",
+    "description": "Manage tables",
+    "cardTitle": "Tables",
+    "cardDescription": "Manage tables"
+  },
+  "AccountTable": {
+    "columnName": "Name",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "filterEmails": "Filter emails...",
+    "noResults": "No results.",
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "deleteEmployeeTitle": "Delete employee?",
+    "deleteEmployeeDescription": "will be permanently deleted",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "createAccount": "Create account"
+  },
+  "AddEmployee": {
+    "createAccount": "Create account",
+    "title": "Create account",
+    "description": "Name, email, password fields are required",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "upload": "Upload",
+    "add": "Add"
+  },
+  "EditEmployee": {
+    "updateAccount": "Update account",
+    "title": "Update account",
+    "description": "Name, email, password fields are required",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "changePassword": "Change password",
+    "role": "Role",
+    "upload": "Upload",
+    "update": "Update"
+  },
+  "DashboardMain": {
+    "from": "From",
+    "to": "To",
+    "fromDate": "From date",
+    "toDate": "To date",
+    "reset": "Reset",
+    "totalRevenue": "Total Revenue",
+    "guests": "Guests",
+    "orderFood": "Order food",
+    "orders": "Orders",
+    "paid": "Paid",
+    "servingTables": "Serving Tables"
+  },
+  "DishBarChart": {
+    "dishRanking": "Dish Ranking",
+    "mostOrdered": "Most ordered",
+    "paidOrders": "Paid orders: "
+  },
+  "RevenueLineChart": {
+    "revenue": "Revenue"
+  },
+  "DishTable": {
+    "image": "Image",
+    "name": "Name",
+    "price": "Price",
+    "dishDescription": "Description",
+    "status": "Status",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "filterName": "Filter dish",
+    "noResults": "No results.",
+    "showing": "Showing",
+    "of": "of",
+    "results": "results",
+    "deleteDishTitle": "Delete dish?",
+    "deleteDishDescription": "Dish",
+    "willBeDeletedPermanently": "will be permanently deleted",
+    "cancel": "Cancel",
+    "continue": "Continue"
+  },
+  "AddDish": {
+    "addDish": "Add dish",
+    "addDishTitle": "Add dish",
+    "createDish": "Create dish",
+    "title": "Create dish",
+    "dialogDescription": "Name, price fields are required",
+    "dishImage": "Dish image",
+    "dishName": "Dish name",
+    "name": "Name",
+    "price": "Price",
+    "description": "Product description",
+    "dishDescription": "Description",
+    "status": "Status",
+    "selectStatus": "Select status",
+    "upload": "Upload",
+    "add": "Add"
+  },
+  "EditDish": {
+    "updateDish": "Update dish",
+    "title": "Update dish",
+    "dialogDescription": "Name, price fields are required",
+    "dishImage": "Dish image",
+    "name": "Name",
+    "price": "Price",
+    "dishDescription": "Description",
+    "status": "Status",
+    "selectStatus": "Select status",
+    "upload": "Upload",
+    "update": "Update"
+  },
+  "OrderTableColumns": {
+    "table": "Table",
+    "customer": "Customer",
+    "deleted": "Deleted",
+    "dish": "Dish",
+    "status": "Status",
+    "orderHandler": "Order Handler",
+    "createdUpdated": "Created/Updated",
+    "actions": "Actions",
+    "edit": "Edit",
+    "noResults": "No results.",
+    "showing": "Showing",
+    "of": "of",
+    "results": "results"
+  },
+  "AddOrder": {
+    "createOrder": "Create order",
+    "newCustomer": "New customer",
+    "customerName": "Customer name",
+    "selectTable": "Select table",
+    "selectedCustomer": "Selected customer",
+    "table": "Table",
+    "outOfStock": "Out of stock",
+    "order": "Order",
+    "items": "items",
+    "selectCustomer": "Please select a customer"
+  },
+  "OrderStatics": {
+    "pending": "Pending",
+    "preparing": "Preparing",
+    "served": "Served",
+    "rejected": "Rejected",
+    "paid": "Paid",
+    "orders": "orders",
+    "table": "Table",
+    "guest": "Guest",
+    "ready": "Ready"
+  },
+  "OrderGuestDetail": {
+    "customerInfo": "Customer Information",
+    "orders": "Orders",
+    "total": "Total",
+    "name": "Name",
+    "table": "Table",
+    "registrationDate": "Registration date",
+    "unpaid": "Unpaid",
+    "paid": "Paid",
+    "payAll": "Pay all",
+    "quantity": "Quantity",
+    "created": "Created",
+    "updated": "Updated"
+  },
+  "EditOrder": {
+    "updateOrder": "Update order",
+    "orderInfo": "Order Information",
+    "customer": "Customer",
+    "table": "Table",
+    "dish": "Dish",
+    "quantity": "Quantity",
+    "status": "Status",
+    "orderHandler": "Order Handler",
+    "update": "Update"
+  },
+  "GuestsDialog": {
+    "selectCustomer": "Select Customer",
+    "search": "Name or Id",
+    "name": "Name",
+    "tableNumber": "Table Number",
+    "created": "Created"
+  },
+  "TablesDialog": {
+    "selectTable": "Select Table",
+    "tableNumber": "Table Number",
+    "capacity": "Capacity",
+    "status": "Status",
+    "filterTableNumber": "Filter table number"
+  },
+  "DishesDialog": {
+    "selectDish": "Select Dish",
+    "change": "Change",
+    "dish": "Dish",
+    "price": "Price",
+    "status": "Status",
+    "filterName": "Filter name"
+  },
+  "Footer": {
+    "termOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "about": "About Us"
+  },
+  "AboutPage": {
+    "title": "About Our Restaurant",
+    "address": "Address: 456 Food Street, Central District, Ho Chi Minh City",
+    "ourStory": "Our Story",
+    "storyContent": "Our restaurant was founded in 2010 with a simple mission: to serve delicious, high-quality food that brings people together. Our passion for exceptional ingredients and creative recipes has made us a beloved local establishment, known for our commitment to creating meals that nourish both body and soul.",
+    "ourValues": "Our Values",
+    "valuesContent": "At the heart of our restaurant is a deep dedication to sustainability, community, and culinary excellence. We source our ingredients from local farmers and producers, ensuring freshness and supporting the local economy. Our team is passionate about creating dishes that not only satisfy the palate but also nourish the body, with a focus on healthy, minimally processed foods.",
+    "ourCommitment": "Our Commitment",
+    "commitmentContent": "We believe that good food has the power to bring people together and create lasting memories. That's why we're committed to providing an exceptional dining experience, from the moment you walk through our doors to the last bite of your meal. Our talented chefs work tirelessly to create dishes that showcase the best of seasonal, locally-sourced ingredients, ensuring that every plate is a celebration of flavor and quality."
+  },
+  "PrivacyPolicyPage": {
+    "title": "Privacy Policy",
+    "dataCollection": "Data Collection",
+    "dataCollectionContent": "We collect personal information that you provide when creating an account, placing an order, or contacting us. This information may include your name. Additionally, we also automatically collect some information when you visit our website, such as your IP address and browser type.",
+    "dataUsage": "Purpose of Use",
+    "dataUsageContent": "We use your personal information for the following purposes:",
+    "processOrders": "To process your orders: We use your contact and payment information to confirm and process orders, as well as to send invoices and delivery information.",
+    "customerService": "To provide customer service: We use your contact information to answer questions, resolve issues, and provide technical support.",
+    "marketing": "To send marketing information: With your consent, we may use your email address to send information about new products, services, promotions, and special events.",
+    "serviceImprovement": "To improve our services: We use aggregated and anonymized data to analyze trends and improve our services."
+  },
+  "TermsOfServicePage": {
+    "title": "Terms of Service",
+    "introduction": "Introduction",
+    "introductionContent": "Welcome to our Terms of Service page. By using our services, you agree to comply with the following terms and conditions.",
+    "serviceUsage": "Service Usage",
+    "serviceUsageContent": "You agree to use our services only for lawful purposes and not to violate any laws. You may not use our services to distribute illegal, harmful content or violate others' privacy rights.",
+    "intellectualProperty": "Intellectual Property",
+    "intellectualPropertyContent": "All content and materials on our website, including text, images, graphics, logos, and software, are owned by us or our licensors and are protected by intellectual property laws.",
+    "termsChanges": "Terms Changes",
+    "termsChangesContent": "We reserve the right to change these terms of service at any time without prior notice. Your continued use of the service after changes are posted will be considered your acceptance of those changes.",
+    "contact": "Contact",
+    "contactContent": "If you have any questions about these terms of service, please contact us via email or phone number provided on our website."
+  }
+}

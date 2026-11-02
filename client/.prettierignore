@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+__snapshots__/
+stories/
+.next/
+.turbo/
+generated/

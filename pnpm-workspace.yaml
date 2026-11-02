@@ -1,0 +1,17 @@
+packages:
+  - client
+  - server
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@prisma/client'
+  - '@prisma/engines'
+  - '@swc/core'
+  - bcrypt
+  - bufferutil
+  - esbuild
+  - fastify-socket.io
+  - prisma
+  - sharp
+  - unrs-resolver
+  - utf-8-validate

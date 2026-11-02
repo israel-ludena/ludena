@@ -1,0 +1,85 @@
+services:
+  server:
+    image: ${DOCKERHUB_USERNAME}/qrmeal-server:latest
+    container_name: qrmeal-server
+    restart: unless-stopped
+    expose:
+      - "4008"
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server/uploads:/app/uploads
+      - ./server/prisma:/app/prisma # SQLite database in prisma folder
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:4008/",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    networks:
+      - qrmeal-network
+
+  client:
+    image: ${DOCKERHUB_USERNAME}/qrmeal-client:latest
+    container_name: qrmeal-client
+    restart: unless-stopped
+    expose:
+      - "4007"
+    env_file:
+      - ./client/.env
+    depends_on:
+      server:
+        condition: service_healthy
+    networks:
+      - qrmeal-network
+
+  nginx:
+    image: ${DOCKERHUB_USERNAME}/qrmeal-nginx:latest
+    container_name: qrmeal-nginx
+    restart: unless-stopped
+    ports:
+      - "8407:80"
+      - "4407:443"
+    depends_on:
+      - server
+      - client
+    volumes:
+      # Mount SSL certificates if available
+      # - ./nginx/ssl:/etc/nginx/ssl:ro
+      # - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - qrmeal-network
+
+  prisma-studio:
+    image: ${DOCKERHUB_USERNAME}/qrmeal-server:latest
+    container_name: qrmeal-prisma-studio
+    restart: unless-stopped
+    ports:
+      - "5556:5555"
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server/prisma:/app/prisma
+    command:
+      [
+        "sh",
+        "-c",
+        "pnpm prisma studio --port 5555 --browser none",
+      ]
+    depends_on:
+      - server
+    networks:
+      - qrmeal-network
+
+networks:
+  qrmeal-network:
+    driver: bridge
