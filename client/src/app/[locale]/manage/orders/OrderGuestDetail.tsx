@@ -6,7 +6,7 @@ import {
   formatCurrency,
   formatDateTimeToLocaleString,
   formatDateTimeToTimeString,
-  getVietnameseOrderStatus,
+  getOrderStatusLabel,
   handleErrorApi,
 } from "@/lib/utils";
 import { usePayForGuestMutation } from "@/queries/useOrder";
@@ -70,7 +70,7 @@ export default function OrderGuestDetail({
           return (
             <div key={order.id} className='flex items-center gap-2 text-xs'>
               <span className='w-[10px]'>{index + 1}</span>
-              <span title={getVietnameseOrderStatus(order.status)}>
+              <span title={getOrderStatusLabel(order.status)}>
                 {order.status === OrderStatus.Pending && <OrderStatusIcon.Pending className='h-4 w-4' />}
                 {order.status === OrderStatus.Processing && <OrderStatusIcon.Processing className='h-4 w-4' />}
                 {order.status === OrderStatus.Rejected && <OrderStatusIcon.Rejected className='h-4 w-4 text-red-400' />}
@@ -148,7 +148,7 @@ export default function OrderGuestDetail({
           disabled={ordersFilterToPurchase.length === 0}
           onClick={pay}
         >
-          {t("payAll")} ({ordersFilterToPurchase.length} đơn)
+          {t("payAll")} ({ordersFilterToPurchase.length} pedidos)
         </Button>
       </div>
     </div>

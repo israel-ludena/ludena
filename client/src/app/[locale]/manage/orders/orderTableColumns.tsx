@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { GetOrdersResType } from "@/schemaValidations/order.schema";
 import { useContext } from "react";
-import { formatCurrency, formatDateTimeToLocaleString, getVietnameseOrderStatus, simpleMatchText } from "@/lib/utils";
+import { formatCurrency, formatDateTimeToLocaleString, getOrderStatusLabel, simpleMatchText } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { OrderStatus, OrderStatusValues } from "@/constants/type";
@@ -144,7 +144,7 @@ const useOrderTableColumns = (): ColumnDef<OrderItem>[] => {
             <SelectContent>
               {OrderStatusValues.map((status) => (
                 <SelectItem key={status} value={status}>
-                  {getVietnameseOrderStatus(status)}
+                  {getOrderStatusLabel(status)}
                 </SelectItem>
               ))}
             </SelectContent>

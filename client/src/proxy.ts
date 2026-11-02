@@ -4,18 +4,20 @@ import type { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import { TokenPayload } from "@/types/jwt.types";
 import createMiddleware from "next-intl/middleware";
-import { defaultLocale } from "@/config";
+import { defaultLocale, locales } from "@/config";
 import { routing } from "@/i18n/routing";
 const decodeToken = (token: string) => {
   return jwt.decode(token) as TokenPayload;
 };
 
-const managePaths = ["/vi/manage", "/en/manage"];
-const guestPaths = ["/vi/guest", "/en/guest"];
-const onlyOwnerPaths = ["/vi/manage/accounts", "/en/manage/accounts"];
+// Rutas protegidas generadas a partir de los idiomas configurados en @/config
+const withLocales = (path: string) => locales.map((locale) => `/${locale}${path}`);
+const managePaths = withLocales("/manage");
+const guestPaths = withLocales("/guest");
+const onlyOwnerPaths = withLocales("/manage/accounts");
 const privatePaths = [...managePaths, ...guestPaths];
-const unAuthPaths = ["/vi/login", "/en/login"];
-const loginPaths = ["/vi/login", "/en/login"];
+const unAuthPaths = withLocales("/login");
+const loginPaths = withLocales("/login");
 
 export function proxy(request: NextRequest) {
   const handleI18nRouting = createMiddleware(routing);
@@ -66,5 +68,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(vi|en)/:path*"],
+  // Debe coincidir con `locales` en @/config (Next.js exige un valor literal aquí)
+  matcher: ["/", "/(es|en)/:path*"],
 };

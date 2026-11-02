@@ -38,7 +38,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { formatCurrency, getVietnameseDishStatus, handleErrorApi } from "@/lib/utils";
+import { formatCurrency, getDishStatusLabel, handleErrorApi } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { DishListResType } from "@/schemaValidations/dish.schema";
 import EditDish from "@/app/[locale]/manage/dishes/EditDish";
@@ -102,7 +102,7 @@ function useDishColumns() {
     {
       accessorKey: "status",
       header: t("status"),
-      cell: ({ row }) => <div>{getVietnameseDishStatus(row.getValue("status"))}</div>,
+      cell: ({ row }) => <div>{getDishStatusLabel(row.getValue("status"))}</div>,
     },
     {
       id: "actions",

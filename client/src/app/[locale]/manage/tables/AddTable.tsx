@@ -8,7 +8,7 @@ import { PlusCircle } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { getVietnameseTableStatus, handleErrorApi } from "@/lib/utils";
+import { getTableStatusLabel, handleErrorApi } from "@/lib/utils";
 import { CreateTableBody, CreateTableBodyType } from "@/schemaValidations/table.schema";
 import { TableStatus, TableStatusValues } from "@/constants/type";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -135,7 +135,7 @@ export default function AddTable() {
                           <SelectContent>
                             {TableStatusValues.map((status) => (
                               <SelectItem key={status} value={status}>
-                                {getVietnameseTableStatus(status)}
+                                {getTableStatusLabel(status)}
                               </SelectItem>
                             ))}
                           </SelectContent>

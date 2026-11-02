@@ -17,7 +17,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getVietnameseDishStatus, handleErrorApi } from "@/lib/utils";
+import { getDishStatusLabel, handleErrorApi } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { UpdateDishBody, UpdateDishBodyType } from "@/schemaValidations/dish.schema";
 import { DishStatus, DishStatusValues } from "@/constants/type";
@@ -241,7 +241,7 @@ export default function EditDish({
                           <SelectContent>
                             {DishStatusValues.map((status) => (
                               <SelectItem key={status} value={status}>
-                                {getVietnameseDishStatus(status)}
+                                {getDishStatusLabel(status)}
                               </SelectItem>
                             ))}
                           </SelectContent>

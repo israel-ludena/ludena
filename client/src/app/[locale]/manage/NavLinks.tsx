@@ -65,7 +65,7 @@ export default function NavLinks() {
                 )}
               >
                 <Settings className='h-5 w-5' />
-                <span className='sr-only'>Cài đặt</span>
+                <span className='sr-only'>Configuración</span>
               </Link>
             </TooltipTrigger>
             <TooltipContent side='right'>{t("setting")}</TooltipContent>

@@ -59,7 +59,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
         fastify.io.to(ManagerRoom).emit("new-order", orders);
       }
       reply.send({
-        message: `Tạo thành công ${orders.length} đơn hàng cho khách hàng`,
+        message: `Se crearon ${orders.length} pedidos para el cliente`,
         data: orders as CreateOrdersResType["data"],
       });
     }
@@ -80,7 +80,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
         toDate: request.query.toDate,
       });
       reply.send({
-        message: "Lấy danh sách đơn hàng thành công",
+        message: "Lista de pedidos obtenida",
         data: result as GetOrdersResType["data"],
       });
     }
@@ -99,7 +99,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
     async (request, reply) => {
       const result = await getOrderDetailController(request.params.orderId);
       reply.send({
-        message: "Lấy đơn hàng thành công",
+        message: "Pedido obtenido",
         data: result as GetOrderDetailResType["data"],
       });
     }
@@ -127,7 +127,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
         fastify.io.to(ManagerRoom).emit("update-order", result.order);
       }
       reply.send({
-        message: "Cập nhật đơn hàng thành công",
+        message: "Pedido actualizado",
         data: result.order as UpdateOrderResType["data"],
       });
     }
@@ -154,7 +154,7 @@ export default async function orderRoutes(fastify: FastifyInstance, _options: Fa
         fastify.io.to(ManagerRoom).emit("payment", result.orders);
       }
       reply.send({
-        message: `Thanh toán thành công ${result.orders.length} đơn`,
+        message: `Se cobraron ${result.orders.length} pedidos`,
         data: result.orders as PayGuestOrdersResType["data"],
       });
     }

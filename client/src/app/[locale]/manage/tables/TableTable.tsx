@@ -37,7 +37,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { getVietnameseTableStatus, handleErrorApi } from "@/lib/utils";
+import { getTableStatusLabel, handleErrorApi } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import AutoPagination from "@/components/AutoPagination";
 import { TableListResType } from "@/schemaValidations/table.schema";
@@ -83,7 +83,7 @@ function useTableColumns() {
     {
       accessorKey: "status",
       header: t("status"),
-      cell: ({ row }) => <div>{getVietnameseTableStatus(row.getValue("status"))}</div>,
+      cell: ({ row }) => <div>{getTableStatusLabel(row.getValue("status"))}</div>,
     },
     {
       accessorKey: "token",

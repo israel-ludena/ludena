@@ -7,7 +7,7 @@ import { UpdateOrderBody, UpdateOrderBodyType } from "@/schemaValidations/order.
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { getVietnameseOrderStatus, handleErrorApi } from "@/lib/utils";
+import { getOrderStatusLabel, handleErrorApi } from "@/lib/utils";
 import { OrderStatus, OrderStatusValues } from "@/constants/type";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DishesDialog } from "@/app/[locale]/manage/orders/DishesDialog";
@@ -177,7 +177,7 @@ export default function EditOrder({
                         <SelectContent>
                           {OrderStatusValues.map((status) => (
                             <SelectItem key={status} value={status}>
-                              {getVietnameseOrderStatus(status)}
+                              {getOrderStatusLabel(status)}
                             </SelectItem>
                           ))}
                         </SelectContent>

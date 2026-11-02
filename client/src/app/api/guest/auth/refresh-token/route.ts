@@ -9,7 +9,7 @@ export async function POST(_request: Request) {
   if (!refreshToken) {
     return Response.json(
       {
-        message: "Không tìm thấy refreshToken",
+        message: "No se encontró el refreshToken",
       },
       {
         status: 401,
@@ -46,7 +46,7 @@ export async function POST(_request: Request) {
     console.log(error);
     return Response.json(
       {
-        message: error.message ?? "Có lỗi xảy ra",
+        message: error.message ?? "Ocurrió un error",
       },
       {
         status: 401,

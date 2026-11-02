@@ -62,7 +62,7 @@ export default function MenuOrder() {
           >
             <div className='relative flex-shrink-0'>
               {dish.status === DishStatus.Unavailable && (
-                <span className='absolute inset-0 flex items-center justify-center text-sm'>Hết hàng</span>
+                <span className='absolute inset-0 flex items-center justify-center text-sm'>Agotado</span>
               )}
               <Image
                 src={dish.image}

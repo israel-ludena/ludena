@@ -10,7 +10,7 @@ export async function POST(_request: Request) {
   if (!accessToken || !refreshToken) {
     return Response.json(
       {
-        message: "Không nhận được access token hoặc refresh token",
+        message: "No se recibió el access token o el refresh token",
       },
       {
         status: 200,
@@ -27,7 +27,7 @@ export async function POST(_request: Request) {
     console.log(error);
     return Response.json(
       {
-        message: "Lỗi khi gọi API đến server backend",
+        message: "Error al llamar a la API del servidor",
       },
       {
         status: 200,

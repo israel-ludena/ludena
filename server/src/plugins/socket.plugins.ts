@@ -13,7 +13,7 @@ export const socketPlugin = fastifyPlugin(async (fastify) => {
 
     if (!Authorization) {
       console.error(chalk.redBright("❌ No Authorization header"));
-      return next(new AuthError("Authorization không hợp lệ"));
+      return next(new AuthError("Autorización no válida"));
     }
     const accessToken = Authorization.split(" ")[1];
     try {
