@@ -33,10 +33,10 @@ export default async function mediaRoutes(fastify: FastifyInstance, _options: Fa
         },
       });
       if (!data) {
-        throw new Error("Không tìm thấy file");
+        throw new Error("No se encontró el archivo");
       }
       const url = await uploadImage(data);
-      return reply.send({ message: "Upload ảnh thành công", data: url });
+      return reply.send({ message: "Imagen subida", data: url });
     }
   );
 }

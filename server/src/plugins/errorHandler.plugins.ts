@@ -55,7 +55,7 @@ export const errorHandlerPlugin = fastifyPlugin(async (fastify) => {
   ) {
     if (isEntityError(error)) {
       return reply.status(error.status).send({
-        message: "Lỗi xảy ra khi xác thực dữ liệu...",
+        message: "Ocurrió un error al validar los datos...",
         errors: error.fields,
         statusCode: error.status,
       });
@@ -101,7 +101,7 @@ export const errorHandlerPlugin = fastifyPlugin(async (fastify) => {
     } else if (isPrismaClientKnownRequestError(error) && error.code === "P2025") {
       const statusCode = 404;
       return reply.status(statusCode).send({
-        message: error.message ?? "Không tìm thấy dữ liệu",
+        message: error.message ?? "No se encontraron datos",
         statusCode: statusCode,
       });
     } else {

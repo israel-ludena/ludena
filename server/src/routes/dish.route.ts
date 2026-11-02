@@ -30,7 +30,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       const dishs = await getDishList();
       reply.send({
         data: dishs as DishListResType["data"],
-        message: "Lấy danh sách món ăn thành công!",
+        message: "Lista de platos obtenida",
       });
     }
   );
@@ -52,7 +52,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       const dish = await getDishDetail(request.params.id);
       reply.send({
         data: dish as DishResType["data"],
-        message: "Lấy thông tin món ăn thành công!",
+        message: "Plato obtenido",
       });
     }
   );
@@ -78,7 +78,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       const dish = await createDish(request.body);
       reply.send({
         data: dish as DishResType["data"],
-        message: "Tạo món ăn thành công!",
+        message: "Plato creado",
       });
     }
   );
@@ -105,7 +105,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
       const dish = await updateDish(request.params.id, request.body);
       reply.send({
         data: dish as DishResType["data"],
-        message: "Cập nhật món ăn thành công!",
+        message: "Plato actualizado",
       });
     }
   );
@@ -129,7 +129,7 @@ export default async function dishRoutes(fastify: FastifyInstance, _options: Fas
     async (request, reply) => {
       const result = await deleteDish(request.params.id);
       reply.send({
-        message: "Xóa món ăn thành công!",
+        message: "Plato eliminado",
         data: result as DishResType["data"],
       });
     }

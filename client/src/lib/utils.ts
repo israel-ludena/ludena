@@ -164,70 +164,70 @@ export const checkAndRefreshToken = async (param?: {
 };
 
 /**
- * Formats a number as currency in Vietnamese Dong (VND).
+ * Formatea un número como moneda en dólares (USD), formato de Ecuador.
  *
- * @param number The number to be formatted as currency.
- * @returns The formatted currency string in Vietnamese Dong (VND).
+ * @param number El valor a formatear.
+ * @returns El valor formateado, por ejemplo "$12,50".
  */
 export const formatCurrency = (number: number) => {
-  return new Intl.NumberFormat("vi-VN", {
+  return new Intl.NumberFormat("es-EC", {
     style: "currency",
-    currency: "VND",
+    currency: "USD",
   }).format(number);
 };
 
 /**
- * Gets the Vietnamese translation of a dish status.
+ * Gets the Spanish label for a dish status.
  *
  * @param status The status of the dish.
- * @returns The Vietnamese translation of the dish status.
+ * @returns The Spanish label for the dish status.
  */
-export const getVietnameseDishStatus = (status: (typeof DishStatus)[keyof typeof DishStatus]) => {
+export const getDishStatusLabel = (status: (typeof DishStatus)[keyof typeof DishStatus]) => {
   switch (status) {
     case DishStatus.Available:
-      return "Có sẵn";
+      return "Disponible";
     case DishStatus.Unavailable:
-      return "Không có sẵn";
+      return "No disponible";
     default:
-      return "Ẩn";
+      return "Oculto";
   }
 };
 
 /**
- * Gets the Vietnamese translation of an order status.
+ * Gets the Spanish label for an order status.
  *
  * @param status The status of the order.
- * @returns The Vietnamese translation of the order status.
+ * @returns The Spanish label for the order status.
  */
-export const getVietnameseOrderStatus = (status: (typeof OrderStatus)[keyof typeof OrderStatus]) => {
+export const getOrderStatusLabel = (status: (typeof OrderStatus)[keyof typeof OrderStatus]) => {
   switch (status) {
     case OrderStatus.Delivered:
-      return "Đã phục vụ";
+      return "Servido";
     case OrderStatus.Paid:
-      return "Đã thanh toán";
+      return "Pagado";
     case OrderStatus.Pending:
-      return "Chờ xử lý";
+      return "Pendiente";
     case OrderStatus.Processing:
-      return "Đang nấu";
+      return "En preparación";
     default:
-      return "Từ chối";
+      return "Rechazado";
   }
 };
 
 /**
- * Gets the Vietnamese translation of a table status.
+ * Gets the Spanish label for a table status.
  *
  * @param status The status of the table.
- * @returns The Vietnamese translation of the table status.
+ * @returns The Spanish label for the table status.
  */
-export const getVietnameseTableStatus = (status: (typeof TableStatus)[keyof typeof TableStatus]) => {
+export const getTableStatusLabel = (status: (typeof TableStatus)[keyof typeof TableStatus]) => {
   switch (status) {
     case TableStatus.Available:
-      return "Có sẵn";
+      return "Disponible";
     case TableStatus.Reserved:
-      return "Đã đặt";
+      return "Reservada";
     default:
-      return "Ẩn";
+      return "Oculto";
   }
 };
 

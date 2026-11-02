@@ -109,9 +109,9 @@ const start = async () => {
       port: envConfig.PORT,
       host: "0.0.0.0", // Always use 0.0.0.0 in production/container environment
     });
-    console.log(`Server đang chạy dưới local tại: ${API_URL}`);
+    console.log(`Servidor corriendo en local en: ${API_URL}`);
     if (envConfig.PRODUCTION) {
-      console.log(`Đang ở mode production với domain: ${envConfig.PRODUCTION_URL}`);
+      console.log(`Modo producción con dominio: ${envConfig.PRODUCTION_URL}`);
     }
   } catch (err) {
     console.error("\nServer startup failed:");

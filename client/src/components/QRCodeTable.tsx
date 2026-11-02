@@ -24,8 +24,8 @@ export default function QRCodeTable({
     canvasContext.font = "20px Arial";
     canvasContext.textAlign = "center";
     canvasContext.fillStyle = "black";
-    canvasContext.fillText(`Bàn số ${tableNumber}`, width / 2, canvas.width + 20);
-    canvasContext.fillText(`Quét mã QR để gọi món`, width / 2, canvas.width + 50);
+    canvasContext.fillText(`Mesa ${tableNumber}`, width / 2, canvas.width + 20);
+    canvasContext.fillText(`Escanea el código QR para pedir`, width / 2, canvas.width + 50);
     const virtualCanvas = document.createElement("canvas");
     QRCode.toCanvas(
       virtualCanvas,

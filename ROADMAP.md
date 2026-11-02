@@ -10,8 +10,8 @@ Cada punto se hace en su propia rama y Pull Request.
 
 ## Fase 1 — Adaptar a Ecuador
 
-- [ ] Español (Ecuador) como idioma principal (`client/messages/es.json`)
-- [ ] Zona horaria `America/Guayaquil`, moneda USD, formato de precios
+- [x] Español (Ecuador) como idioma principal (`client/messages/es.json`) y textos del servidor en español
+- [x] Zona horaria `America/Guayaquil`, moneda USD, formato de precios `es-EC`
 - [ ] Datos iniciales de ejemplo con un restaurante ecuatoriano ficticio
 
 ## Fase 2 — Multi-restaurante (SaaS)

@@ -15,15 +15,15 @@ export const guestLoginController = async (body: GuestLoginBodyType) => {
     },
   });
   if (!table) {
-    throw new Error("Bàn không tồn tại hoặc mã token không đúng");
+    throw new Error("La mesa no existe o el token no es válido");
   }
 
   if (table.status === TableStatus.Hidden) {
-    throw new Error("Bàn này đã bị ẩn, hãy chọn bàn khác để đăng nhập");
+    throw new Error("Esta mesa está oculta; elige otra mesa para ingresar");
   }
 
   if (table.status === TableStatus.Reserved) {
-    throw new Error("Bàn đã được đặt trước, hãy liên hệ nhân viên để được hỗ trợ");
+    throw new Error("La mesa está reservada; pide ayuda al personal");
   }
 
   let guest = await prisma.guest.create({
@@ -80,7 +80,7 @@ export const guestLogoutController = async (id: number) => {
       refreshTokenExpiresAt: null,
     },
   });
-  return "Đăng xuất thành công";
+  return "Sesión cerrada";
 };
 
 export const guestRefreshTokenController = async (refreshToken: string) => {
@@ -88,7 +88,7 @@ export const guestRefreshTokenController = async (refreshToken: string) => {
   try {
     decodedRefreshToken = verifyRefreshToken(refreshToken);
   } catch (_error) {
-    throw new AuthError("Refresh token không hợp lệ");
+    throw new AuthError("Refresh token no válido");
   }
   const newRefreshToken = signRefreshToken({
     userId: decodedRefreshToken.userId,
@@ -128,7 +128,7 @@ export const guestCreateOrdersController = async (guestId: number, body: GuestCr
       },
     });
     if (guest.tableNumber === null) {
-      throw new Error("Bàn của bạn đã bị xóa, vui lòng đăng xuất và đăng nhập lại một bàn mới");
+      throw new Error("Tu mesa fue eliminada; cierra sesión e ingresa en otra mesa");
     }
     const table = await tx.table.findUniqueOrThrow({
       where: {
@@ -136,10 +136,10 @@ export const guestCreateOrdersController = async (guestId: number, body: GuestCr
       },
     });
     if (table.status === TableStatus.Hidden) {
-      throw new Error(`Bàn ${table.number} đã bị ẩn, vui lòng đăng xuất và chọn bàn khác`);
+      throw new Error(`La mesa ${table.number} está oculta; cierra sesión y elige otra mesa`);
     }
     if (table.status === TableStatus.Reserved) {
-      throw new Error(`Bàn ${table.number} đã được đặt trước, vui lòng đăng xuất và chọn bàn khác`);
+      throw new Error(`La mesa ${table.number} está reservada; cierra sesión y elige otra mesa`);
     }
     const orders = await Promise.all(
       body.map(async (order) => {
@@ -149,10 +149,10 @@ export const guestCreateOrdersController = async (guestId: number, body: GuestCr
           },
         });
         if (dish.status === DishStatus.Unavailable) {
-          throw new Error(`Món ${dish.name} đã hết`);
+          throw new Error(`El plato ${dish.name} está agotado`);
         }
         if (dish.status === DishStatus.Hidden) {
-          throw new Error(`Món ${dish.name} không thể đặt`);
+          throw new Error(`El plato ${dish.name} no se puede pedir`);
         }
         const dishSnapshot = await tx.dishSnapshot.create({
           data: {

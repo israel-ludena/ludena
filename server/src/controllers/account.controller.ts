@@ -28,7 +28,7 @@ export const initOwnerAccount = async () => {
     const chalk = await getChalk();
     console.log(
       chalk.bgCyan(
-        `Khởi tạo tài khoản chủ quán thành công: ${envConfig.INITIAL_EMAIL_OWNER}|${envConfig.INITIAL_PASSWORD_OWNER}`
+        `Cuenta del dueño creada: ${envConfig.INITIAL_EMAIL_OWNER}|${envConfig.INITIAL_PASSWORD_OWNER}`
       )
     );
   }
@@ -50,7 +50,7 @@ export const createEmployeeAccount = async (body: CreateEmployeeAccountBodyType)
   } catch (error: unknown) {
     if (isPrismaClientKnownRequestError(error)) {
       if (error.code === PrismaErrorCode.UniqueConstraintViolation) {
-        throw new EntityError([{ field: "email", message: "Email đã tồn tại" }]);
+        throw new EntityError([{ field: "email", message: "El correo ya existe" }]);
       }
     }
     throw error;
@@ -102,7 +102,7 @@ export const updateEmployeeAccount = async (accountId: number, body: UpdateEmplo
       }),
     ]);
     if (!oldAccount) {
-      throw new EntityError([{ field: "email", message: "Tài khoản bạn đang cập nhật không còn tồn tại nữa!" }]);
+      throw new EntityError([{ field: "email", message: "La cuenta que intentas actualizar ya no existe" }]);
     }
     const isChangeRole = oldAccount.role !== body.role;
     if (body.changePassword) {
@@ -145,7 +145,7 @@ export const updateEmployeeAccount = async (accountId: number, body: UpdateEmplo
   } catch (error: unknown) {
     if (isPrismaClientKnownRequestError(error)) {
       if (error.code === PrismaErrorCode.UniqueConstraintViolation) {
-        throw new EntityError([{ field: "email", message: "Email đã tồn tại" }]);
+        throw new EntityError([{ field: "email", message: "El correo ya existe" }]);
       }
     }
     throw error;
@@ -196,7 +196,7 @@ export const changePasswordController = async (accountId: number, body: ChangePa
   });
   const isSame = await comparePassword(body.oldPassword, account.password);
   if (!isSame) {
-    throw new EntityError([{ field: "oldPassword", message: "Mật khẩu cũ không đúng" }]);
+    throw new EntityError([{ field: "oldPassword", message: "La contraseña actual no es correcta" }]);
   }
   const hashedPassword = await hashPassword(body.password);
   const newAccount = await prisma.account.update({
@@ -232,11 +232,11 @@ export const createGuestController = async (body: CreateGuestBodyType) => {
     },
   });
   if (!table) {
-    throw new Error("Bàn không tồn tại");
+    throw new Error("La mesa no existe");
   }
 
   if (table.status === TableStatus.Hidden) {
-    throw new Error(`Bàn ${table.number} đã bị ẩn, vui lòng chọn bàn khác`);
+    throw new Error(`La mesa ${table.number} está oculta; elige otra mesa`);
   }
   const guest = await prisma.guest.create({
     data: body,

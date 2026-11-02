@@ -217,7 +217,7 @@ export default function EditEmployee({
                         <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue placeholder='Chọn vai trò' />
+                              <SelectValue placeholder='Seleccionar rol' />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>

@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { getTableLink, getVietnameseTableStatus, handleErrorApi } from "@/lib/utils";
+import { getTableLink, getTableStatusLabel, handleErrorApi } from "@/lib/utils";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { UpdateTableBody, UpdateTableBodyType } from "@/schemaValidations/table.schema";
 import { TableStatus, TableStatusValues } from "@/constants/type";
@@ -158,7 +158,7 @@ export default function EditTable({
                           <SelectContent>
                             {TableStatusValues.map((status) => (
                               <SelectItem key={status} value={status}>
-                                {getVietnameseTableStatus(status)}
+                                {getTableStatusLabel(status)}
                               </SelectItem>
                             ))}
                           </SelectContent>

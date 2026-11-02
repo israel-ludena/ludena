@@ -14,7 +14,7 @@ export default async function DishDetail({ dish }: { dish: DishResType["data"] |
   return (
     <div className='space-y-4'>
       <h1 className='text-2xl font-semibold lg:text-3xl'>{dish.name}</h1>
-      <div className='font-semibold'>Giá: {formatCurrency(dish.price)}</div>
+      <div className='font-semibold'>Precio: {formatCurrency(dish.price)}</div>
       <Image
         src={dish.image}
         width={700}

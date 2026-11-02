@@ -1,0 +1,448 @@
+{
+  "ErrorMessage": {
+    "invalidEmail": "Correo no válido",
+    "required": "Este campo es obligatorio",
+    "minmaxPassword": "La contraseña debe tener entre 6 y 100 caracteres"
+  },
+  "TableTable": {
+    "tableNumber": "Número de mesa",
+    "capacity": "Capacidad",
+    "status": "Estado",
+    "qrCode": "Código QR",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deleteTableTitle": "¿Eliminar mesa?",
+    "deleteTableDescription": "La mesa",
+    "willBeDeletedPermanently": "se eliminará de forma permanente",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "showing": "Mostrando",
+    "of": "de",
+    "results": "resultados",
+    "filterTableNumber": "Filtrar por número de mesa"
+  },
+  "AddTable": {
+    "addTable": "Agregar mesa",
+    "addTableTitle": "Agregar mesa",
+    "tableNumber": "Número de mesa",
+    "capacity": "Capacidad de personas",
+    "status": "Estado",
+    "selectStatus": "Seleccionar estado",
+    "add": "Agregar"
+  },
+  "EditTable": {
+    "update": "Actualizar mesa",
+    "tableNumber": "Número de mesa",
+    "capacity": "Capacidad (personas)",
+    "status": "Estado",
+    "selectStatus": "Seleccionar estado",
+    "changeQRCode": "Cambiar código QR",
+    "qrCode": "Código QR",
+    "orderUrl": "Enlace para pedir",
+    "save": "Guardar"
+  },
+  "Brand": {
+    "title": "Ludeña Menú",
+    "defaultTitle": "Ludeña Menú"
+  },
+  "OrderTable": {
+    "from": "Desde",
+    "to": "Hasta",
+    "fromDate": "Fecha inicial",
+    "toDate": "Fecha final",
+    "reset": "Restablecer",
+    "guestName": "Nombre del cliente",
+    "tableNumber": "Número de mesa",
+    "status": "Estado",
+    "showing": "Mostrando",
+    "of": "de",
+    "results": "resultados",
+    "noResults": "Sin resultados.",
+    "orderUpdated": "El pedido {dishName} (Cant.: {quantity}) cambió a {status}",
+    "newOrderPlaced": "{guestName} en la mesa {tableNumber} acaba de hacer {orderCount} pedidos",
+    "paymentSuccessful": "{guestName} en la mesa {tableNumber} pagó {orderCount} pedidos"
+  },
+  "ChangePasswordForm": {
+    "changePassword": "Cambiar contraseña",
+    "oldPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "confirmNewPassword": "Confirmar nueva contraseña",
+    "cancel": "Cancelar",
+    "save": "Guardar información"
+  },
+  "UpdateProfileForm": {
+    "personalInfo": "Información personal",
+    "upload": "Subir",
+    "name": "Nombre",
+    "cancel": "Cancelar",
+    "save": "Guardar información"
+  },
+  "HomePage": {
+    "title": "Inicio",
+    "hero-title": "Bienvenido",
+    "description": "Escanea el código de tu mesa, mira la carta y pide sin esperar. Tu pedido llega directo a la cocina.",
+    "slogan": "Pide desde tu mesa",
+    "h2": "Nuestra carta"
+  },
+  "Login": {
+    "title": "Iniciar sesión",
+    "description": "Acceso para el personal del local",
+    "cardDescription": "Ingresa tu correo y contraseña para entrar al sistema",
+    "buttonLogin": "Ingresar",
+    "loginWithGoogle": "Ingresar con Google"
+  },
+  "DishDetail": {
+    "notFound": "Plato no encontrado"
+  },
+  "LoginGuest": {
+    "title": "Ingresa para pedir",
+    "description": "Escribe tu nombre para hacer tu pedido",
+    "yourname": "Tu nombre",
+    "login": "Continuar"
+  },
+  "GuestMenu": {
+    "title": "Carta",
+    "description": "Elige tus platos favoritos"
+  },
+  "GuestOrders": {
+    "orders": "Pedidos",
+    "paidOrders": "Pedidos pagados",
+    "unpaidOrders": "Pedidos por pagar",
+    "item": "Producto",
+    "placeOrder": "Hacer pedido"
+  },
+  "ManageAccounts": {
+    "title": "Cuentas",
+    "description": "Administra las cuentas del personal"
+  },
+  "Dashboard": {
+    "title": "Panel",
+    "description": "Revisa y analiza tus ventas"
+  },
+  "Dishes": {
+    "title": "Platos",
+    "description": "Administra los platos"
+  },
+  "Orders": {
+    "title": "Pedidos",
+    "description": "Administra los pedidos"
+  },
+  "Setting": {
+    "title": "Configuración",
+    "description": "Administra tu cuenta"
+  },
+  "Tables": {
+    "title": "Mesas",
+    "description": "Administra las mesas"
+  },
+  "SwitchLanguage": {
+    "title": "Cambiar idioma",
+    "es": "Español",
+    "en": "Inglés",
+    "vi": "Vietnamita"
+  },
+  "NavItem": {
+    "home": "Inicio",
+    "menu": "Carta",
+    "orders": "Pedidos",
+    "login": "Ingresar",
+    "logout": "Cerrar sesión",
+    "manage": "Administrar",
+    "logoutDialog": {
+      "logoutQuestion": "¿Seguro que quieres cerrar sesión?",
+      "logoutCancel": "Cancelar",
+      "logoutConfirm": "Si cierras sesión podrías perder tus pedidos"
+    }
+  },
+  "toast": {
+    "logoutSuccess": "Sesión cerrada",
+    "somethingWentWrong": "Algo salió mal",
+    "errorOccurred": "Ocurrió un error",
+    "orderUpdated": "El plato {dishName} (Cant.: {quantity}) cambió a {status}",
+    "paymentSuccess": "Pagaste {orderCount} pedidos con éxito"
+  },
+  "settings": {
+    "setting": "Configuración",
+    "help": "Ayuda",
+    "logout": "Cerrar sesión"
+  },
+  "Menu": {
+    "dashboard": "Panel",
+    "orders": "Pedidos",
+    "tables": "Mesas",
+    "dishes": "Platos",
+    "accounts": "Personal"
+  },
+  "DashboardPage": {
+    "title": "Panel",
+    "description": "Analiza tus métricas",
+    "cardTitle": "Panel",
+    "cardDescription": "Analiza tus métricas"
+  },
+  "AccountsPage": {
+    "title": "Cuentas",
+    "description": "Administra las cuentas del personal",
+    "cardTitle": "Cuentas",
+    "cardDescription": "Administra las cuentas del personal"
+  },
+  "DishesPage": {
+    "title": "Platos",
+    "description": "Administra los platos",
+    "cardTitle": "Platos",
+    "cardDescription": "Administra los platos"
+  },
+  "OrdersPage": {
+    "title": "Pedidos",
+    "description": "Administra los pedidos",
+    "cardTitle": "Pedidos",
+    "cardDescription": "Administra los pedidos"
+  },
+  "SettingPage": {
+    "title": "Configuración",
+    "description": "Administra tu cuenta",
+    "pageTitle": "Configuración",
+    "ownerBadge": "Dueño"
+  },
+  "TablesPage": {
+    "title": "Mesas",
+    "description": "Administra las mesas",
+    "cardTitle": "Mesas",
+    "cardDescription": "Administra las mesas"
+  },
+  "AccountTable": {
+    "columnName": "Nombre",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "filterEmails": "Filtrar correos...",
+    "noResults": "Sin resultados.",
+    "showing": "Mostrando",
+    "of": "de",
+    "results": "resultados",
+    "deleteEmployeeTitle": "¿Eliminar empleado?",
+    "deleteEmployeeDescription": "se eliminará de forma permanente",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "createAccount": "Crear cuenta"
+  },
+  "AddEmployee": {
+    "createAccount": "Crear cuenta",
+    "title": "Crear cuenta",
+    "description": "Nombre, correo y contraseña son obligatorios",
+    "name": "Nombre",
+    "email": "Correo",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "upload": "Subir",
+    "add": "Agregar"
+  },
+  "EditEmployee": {
+    "updateAccount": "Actualizar cuenta",
+    "title": "Actualizar cuenta",
+    "description": "Nombre, correo y contraseña son obligatorios",
+    "name": "Nombre",
+    "email": "Correo",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "changePassword": "Cambiar contraseña",
+    "role": "Rol",
+    "upload": "Subir",
+    "update": "Actualizar"
+  },
+  "DashboardMain": {
+    "from": "Desde",
+    "to": "Hasta",
+    "fromDate": "Fecha inicial",
+    "toDate": "Fecha final",
+    "reset": "Restablecer",
+    "totalRevenue": "Ventas totales",
+    "guests": "Clientes",
+    "orderFood": "Platos pedidos",
+    "orders": "Pedidos",
+    "paid": "Pagados",
+    "servingTables": "Mesas atendidas"
+  },
+  "DishBarChart": {
+    "dishRanking": "Ranking de platos",
+    "mostOrdered": "Más pedidos",
+    "paidOrders": "Pedidos pagados: "
+  },
+  "RevenueLineChart": {
+    "revenue": "Ventas"
+  },
+  "DishTable": {
+    "image": "Imagen",
+    "name": "Nombre",
+    "price": "Precio",
+    "dishDescription": "Descripción",
+    "status": "Estado",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "filterName": "Filtrar plato",
+    "noResults": "Sin resultados.",
+    "showing": "Mostrando",
+    "of": "de",
+    "results": "resultados",
+    "deleteDishTitle": "¿Eliminar plato?",
+    "deleteDishDescription": "El plato",
+    "willBeDeletedPermanently": "se eliminará de forma permanente",
+    "cancel": "Cancelar",
+    "continue": "Continuar"
+  },
+  "AddDish": {
+    "addDish": "Agregar plato",
+    "addDishTitle": "Agregar plato",
+    "createDish": "Crear plato",
+    "title": "Crear plato",
+    "dialogDescription": "Nombre y precio son obligatorios",
+    "dishImage": "Imagen del plato",
+    "dishName": "Nombre del plato",
+    "name": "Nombre",
+    "price": "Precio",
+    "description": "Descripción del producto",
+    "dishDescription": "Descripción",
+    "status": "Estado",
+    "selectStatus": "Seleccionar estado",
+    "upload": "Subir",
+    "add": "Agregar"
+  },
+  "EditDish": {
+    "updateDish": "Actualizar plato",
+    "title": "Actualizar plato",
+    "dialogDescription": "Nombre y precio son obligatorios",
+    "dishImage": "Imagen del plato",
+    "name": "Nombre",
+    "price": "Precio",
+    "dishDescription": "Descripción",
+    "status": "Estado",
+    "selectStatus": "Seleccionar estado",
+    "upload": "Subir",
+    "update": "Actualizar"
+  },
+  "OrderTableColumns": {
+    "table": "Mesa",
+    "customer": "Cliente",
+    "deleted": "Eliminado",
+    "dish": "Plato",
+    "status": "Estado",
+    "orderHandler": "Atendido por",
+    "createdUpdated": "Creado/Actualizado",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "noResults": "Sin resultados.",
+    "showing": "Mostrando",
+    "of": "de",
+    "results": "resultados"
+  },
+  "AddOrder": {
+    "createOrder": "Crear pedido",
+    "newCustomer": "Cliente nuevo",
+    "customerName": "Nombre del cliente",
+    "selectTable": "Seleccionar mesa",
+    "selectedCustomer": "Cliente seleccionado",
+    "table": "Mesa",
+    "outOfStock": "Agotado",
+    "order": "Pedir",
+    "items": "productos",
+    "selectCustomer": "Selecciona un cliente"
+  },
+  "OrderStatics": {
+    "pending": "Pendiente",
+    "preparing": "En preparación",
+    "served": "Servido",
+    "rejected": "Rechazado",
+    "paid": "Pagado",
+    "orders": "pedidos",
+    "table": "Mesa",
+    "guest": "Cliente",
+    "ready": "Libre"
+  },
+  "OrderGuestDetail": {
+    "customerInfo": "Información del cliente",
+    "orders": "Pedidos",
+    "total": "Total",
+    "name": "Nombre",
+    "table": "Mesa",
+    "registrationDate": "Fecha de registro",
+    "unpaid": "Por pagar",
+    "paid": "Pagado",
+    "payAll": "Cobrar todo",
+    "quantity": "Cantidad",
+    "created": "Creado",
+    "updated": "Actualizado"
+  },
+  "EditOrder": {
+    "updateOrder": "Actualizar pedido",
+    "orderInfo": "Información del pedido",
+    "customer": "Cliente",
+    "table": "Mesa",
+    "dish": "Plato",
+    "quantity": "Cantidad",
+    "status": "Estado",
+    "orderHandler": "Atendido por",
+    "update": "Actualizar"
+  },
+  "GuestsDialog": {
+    "selectCustomer": "Seleccionar cliente",
+    "search": "Nombre o ID",
+    "name": "Nombre",
+    "tableNumber": "Número de mesa",
+    "created": "Creado"
+  },
+  "TablesDialog": {
+    "selectTable": "Seleccionar mesa",
+    "tableNumber": "Número de mesa",
+    "capacity": "Capacidad",
+    "status": "Estado",
+    "filterTableNumber": "Filtrar por número de mesa"
+  },
+  "DishesDialog": {
+    "selectDish": "Seleccionar plato",
+    "change": "Cambiar",
+    "dish": "Plato",
+    "price": "Precio",
+    "status": "Estado",
+    "filterName": "Filtrar por nombre"
+  },
+  "Footer": {
+    "termOfService": "Términos de servicio",
+    "privacyPolicy": "Política de privacidad",
+    "about": "Nosotros"
+  },
+  "AboutPage": {
+    "title": "Sobre nuestro restaurante",
+    "address": "Dirección: Av. Ejemplo N00-00, Quito, Ecuador",
+    "ourStory": "Nuestra historia",
+    "storyContent": "Texto de ejemplo. Cada restaurante podrá escribir aquí su propia historia desde el panel.",
+    "ourValues": "Nuestros valores",
+    "valuesContent": "Texto de ejemplo. Aquí el restaurante describe lo que lo hace especial: ingredientes, proveedores locales y forma de servir.",
+    "ourCommitment": "Nuestro compromiso",
+    "commitmentContent": "Texto de ejemplo. Aquí el restaurante cuenta qué promete a sus clientes en cada visita."
+  },
+  "PrivacyPolicyPage": {
+    "title": "Política de privacidad",
+    "dataCollection": "Datos que recopilamos",
+    "dataCollectionContent": "Texto provisional, pendiente de revisión legal según la LOPDP. Recopilamos el nombre que escribes para hacer tu pedido y datos técnicos básicos de tu visita, como el tipo de navegador.",
+    "dataUsage": "Para qué los usamos",
+    "dataUsageContent": "Usamos tus datos personales para:",
+    "processOrders": "Procesar tus pedidos: confirmarlos, enviarlos a cocina y, si lo solicitas, emitir tu factura.",
+    "customerService": "Atenderte: responder preguntas y resolver problemas.",
+    "marketing": "Enviarte promociones: solo con tu consentimiento expreso, por correo o WhatsApp.",
+    "serviceImprovement": "Mejorar el servicio: con datos agregados y anónimos."
+  },
+  "TermsOfServicePage": {
+    "title": "Términos de servicio",
+    "introduction": "Introducción",
+    "introductionContent": "Texto provisional, pendiente de revisión legal. Al usar este servicio aceptas los siguientes términos.",
+    "serviceUsage": "Uso del servicio",
+    "serviceUsageContent": "Te comprometes a usar el servicio solo con fines lícitos y sin afectar los derechos de otras personas.",
+    "intellectualProperty": "Propiedad intelectual",
+    "intellectualPropertyContent": "Los contenidos de la carta pertenecen a cada restaurante. El software pertenece a su titular y a sus licenciantes.",
+    "termsChanges": "Cambios en los términos",
+    "termsChangesContent": "Podemos actualizar estos términos. Te avisaremos de los cambios relevantes.",
+    "contact": "Contacto",
+    "contactContent": "Si tienes preguntas sobre estos términos, escríbenos a los datos de contacto del sitio."
+  }
+}

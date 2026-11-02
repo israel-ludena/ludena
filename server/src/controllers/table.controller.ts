@@ -34,7 +34,7 @@ export const createTable = async (data: CreateTableBodyType) => {
     if (isPrismaClientKnownRequestError(error) && error.code === "P2002") {
       throw new EntityError([
         {
-          message: "Số bàn này đã tồn tại",
+          message: "Ese número de mesa ya existe",
           field: "number",
         },
       ]);

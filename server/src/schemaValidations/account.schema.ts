@@ -40,7 +40,7 @@ export const CreateEmployeeAccountBody = z
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: "custom",
-        message: "Mật khẩu không khớp",
+        message: "Las contraseñas no coinciden",
         path: ["confirmPassword"],
       });
     }
@@ -64,13 +64,13 @@ export const UpdateEmployeeAccountBody = z
       if (!password || !confirmPassword) {
         ctx.addIssue({
           code: "custom",
-          message: "Hãy nhập mật khẩu mới và xác nhận mật khẩu mới",
+          message: "Ingresa la nueva contraseña y su confirmación",
           path: ["changePassword"],
         });
       } else if (confirmPassword !== password) {
         ctx.addIssue({
           code: "custom",
-          message: "Mật khẩu không khớp",
+          message: "Las contraseñas no coinciden",
           path: ["confirmPassword"],
         });
       }
@@ -99,7 +99,7 @@ export const ChangePasswordBody = z
     if (confirmPassword !== password) {
       ctx.addIssue({
         code: "custom",
-        message: "Mật khẩu mới không khớp",
+        message: "Las nuevas contraseñas no coinciden",
         path: ["confirmPassword"],
       });
     }

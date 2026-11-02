@@ -17,7 +17,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { formatCurrency, getVietnameseDishStatus, simpleMatchText } from "@/lib/utils";
+import { formatCurrency, getDishStatusLabel, simpleMatchText } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { useDishListQuery } from "@/queries/useDish";
@@ -57,7 +57,7 @@ const useDishColumns = (): ColumnDef<DishItem>[] => {
     {
       accessorKey: "status",
       header: t("status"),
-      cell: ({ row }) => <div>{getVietnameseDishStatus(row.getValue("status"))}</div>,
+      cell: ({ row }) => <div>{getDishStatusLabel(row.getValue("status"))}</div>,
     },
   ];
 };

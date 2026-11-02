@@ -167,7 +167,7 @@ function AlertDialogDeleteAccount({
         <AlertDialogHeader>
           <AlertDialogTitle>{t("deleteEmployeeTitle")}</AlertDialogTitle>
           <AlertDialogDescription>
-            Tài khoản <span className='bg-foreground text-primary-foreground rounded px-1'>{employeeDelete?.name}</span>{" "}
+            La cuenta <span className='bg-foreground text-primary-foreground rounded px-1'>{employeeDelete?.name}</span>{" "}
             {t("deleteEmployeeDescription")}
           </AlertDialogDescription>
         </AlertDialogHeader>

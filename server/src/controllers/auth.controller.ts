@@ -13,7 +13,7 @@ export const logoutController = async (refreshToken: string) => {
       token: refreshToken,
     },
   });
-  return "Đăng xuất thành công";
+  return "Sesión cerrada";
 };
 
 export const loginController = async (body: LoginBodyType) => {
@@ -23,11 +23,11 @@ export const loginController = async (body: LoginBodyType) => {
     },
   });
   if (!account) {
-    throw new EntityError([{ field: "email", message: "Email không tồn tại" }]);
+    throw new EntityError([{ field: "email", message: "El correo no existe" }]);
   }
   const isPasswordMatch = await comparePassword(body.password, account.password);
   if (!isPasswordMatch) {
-    throw new EntityError([{ field: "password", message: "Email hoặc mật khẩu không đúng" }]);
+    throw new EntityError([{ field: "password", message: "Correo o contraseña incorrectos" }]);
   }
   const accessToken = signAccessToken({
     userId: account.id,
@@ -58,7 +58,7 @@ export const refreshTokenController = async (refreshToken: string) => {
   try {
     verifyRefreshToken(refreshToken);
   } catch (_error) {
-    throw new AuthError("Refresh token không hợp lệ");
+    throw new AuthError("Refresh token no válido");
   }
   const refreshTokenDoc = await prisma.refreshToken.findUniqueOrThrow({
     where: {
@@ -162,7 +162,7 @@ export const loginGoogleController = async (code: string) => {
   if (!googleUser.verified_email) {
     throw new StatusError({
       status: 403,
-      message: "Email chưa được xác minh từ Google",
+      message: "El correo no está verificado en Google",
     });
   }
   const account = await prisma.account.findUnique({
@@ -173,7 +173,7 @@ export const loginGoogleController = async (code: string) => {
   if (!account) {
     throw new StatusError({
       status: 403,
-      message: "Tài khoản này không tồn tại trên hệ thống website",
+      message: "Esta cuenta no existe en el sistema",
     });
   }
   const accessToken = signAccessToken({

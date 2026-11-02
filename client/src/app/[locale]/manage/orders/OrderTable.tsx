@@ -19,7 +19,7 @@ import EditOrder from "@/app/[locale]/manage/orders/EditOrder";
 import { createContext, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import AutoPagination from "@/components/AutoPagination";
-import { getVietnameseOrderStatus, handleErrorApi } from "@/lib/utils";
+import { getOrderStatusLabel, handleErrorApi } from "@/lib/utils";
 import { OrderStatusValues } from "@/constants/type";
 import OrderStatics from "@/app/[locale]/manage/orders/OrderStatics";
 import useOrderTableColumns from "@/app/[locale]/manage/orders/orderTableColumns";
@@ -171,7 +171,7 @@ export default function OrderTable() {
         t("orderUpdated", {
           dishName: name,
           quantity: quantity,
-          status: getVietnameseOrderStatus(data.status),
+          status: getOrderStatusLabel(data.status),
         })
       );
       refetch();
@@ -279,7 +279,7 @@ export default function OrderTable() {
                 className='w-[150px] justify-between text-sm'
               >
                 {table.getColumn("status")?.getFilterValue()
-                  ? getVietnameseOrderStatus(
+                  ? getOrderStatusLabel(
                       table.getColumn("status")?.getFilterValue() as (typeof OrderStatusValues)[number]
                     )
                   : t("status")}
@@ -309,7 +309,7 @@ export default function OrderTable() {
                             table.getColumn("status")?.getFilterValue() === status ? "opacity-100" : "opacity-0"
                           )}
                         />
-                        {getVietnameseOrderStatus(status)}
+                        {getOrderStatusLabel(status)}
                       </CommandItem>
                     ))}
                   </CommandList>

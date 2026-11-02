@@ -16,7 +16,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { cn, getVietnameseTableStatus, simpleMatchText } from "@/lib/utils";
+import { cn, getTableStatusLabel, simpleMatchText } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { TableListResType } from "@/schemaValidations/table.schema";
 import { TableStatus } from "@/constants/type";
@@ -46,7 +46,7 @@ const useTableColumns = (): ColumnDef<TableItem>[] => {
     {
       accessorKey: "status",
       header: t("status"),
-      cell: ({ row }) => <div>{getVietnameseTableStatus(row.getValue("status"))}</div>,
+      cell: ({ row }) => <div>{getTableStatusLabel(row.getValue("status"))}</div>,
     },
   ];
 };

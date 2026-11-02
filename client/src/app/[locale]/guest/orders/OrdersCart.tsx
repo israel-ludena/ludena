@@ -3,7 +3,7 @@
 import { useAppStore } from "@/components/AppProvider";
 import { Badge } from "@/components/ui/badge";
 import { OrderStatus } from "@/constants/type";
-import { formatCurrency, getVietnameseOrderStatus } from "@/lib/utils";
+import { formatCurrency, getOrderStatusLabel } from "@/lib/utils";
 import { useGuestGetOrderListQuery } from "@/queries/useGuest";
 import { PayGuestOrdersResType, UpdateOrderResType } from "@/schemaValidations/order.schema";
 import { useTranslations } from "next-intl";
@@ -77,7 +77,7 @@ export default function OrdersCart() {
         toast_t("orderUpdated", {
           dishName: name,
           quantity: quantity,
-          status: getVietnameseOrderStatus(data.status),
+          status: getOrderStatusLabel(data.status),
         })
       );
       refetch();
@@ -123,7 +123,7 @@ export default function OrdersCart() {
             </div>
           </div>
           <div className='ml-auto flex flex-shrink-0 items-center justify-center'>
-            <Badge variant='outline'>{getVietnameseOrderStatus(order.status)}</Badge>
+            <Badge variant='outline'>{getOrderStatusLabel(order.status)}</Badge>
           </div>
         </div>
       ))}
